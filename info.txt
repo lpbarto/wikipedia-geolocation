@@ -1,0 +1,29 @@
+Studente: Avenante / Kapaj / Bartolacci
+
+
+Progetto: sviluppo di una app per la ricerca e la visualizzazione su mappa di risorse wikipedia (oltre a quelle con geolocalizzazione trovare modi per inferire geolocalizzazione per esempio di concetti)
+
+Esempi:
+
+pagina persone —> trovo luogo di nascita e faccio geocoding
+pagine concetti (rinascimento) —> cerco nel testo link di luoghi ed estraggo geolocalizzazione
+
+Riferimenti:
+
+- https://www.openstreetmap.org/
+- Wikipedia REST API italiana
+
+Da fare
+
+- preparare demo su altervista
+
+
+
+Prima di procedere all’implementazione fare progettazione (carta e penna) o con software di prototyping
+
+
+Strumenti mockup: Mockflow [Progettazione - Da concordare prima dello sviluppo]
+
+Esame: relazione elaborato, presentazione PPT, software in dropbox
+
+

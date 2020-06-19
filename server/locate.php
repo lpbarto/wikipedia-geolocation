@@ -23,7 +23,7 @@ $result = json_decode( $output, true );
 
 foreach( $result["query"]["pages"] as $k => $v ) {
 
-    $outp = array(
+    $outp = array(              // array to return to the client
         "pageid" => $v["pageid"],
         "lat" => $v["coordinates"][0]["lat"],
         "lon" => $v["coordinates"][0]["lon"]
@@ -32,6 +32,22 @@ foreach( $result["query"]["pages"] as $k => $v ) {
 }
 
 
-// Convert output obj to json and return it
-echo json_encode($outp);
+
+if ( isset($outp["lat"]) ){   // Check if the page was geolocated
+
+    echo json_encode($outp); // Convert output obj to json and return it
+
+}else{
+
+    // Check on our database
+
+
+    // If not found start search algorithm
+
+    // Update database
+
+}
+
+
+
 ?>

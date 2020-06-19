@@ -40,14 +40,35 @@ if ( isset($outp["lat"]) ){   // Check if the page was geolocated
 }else{
 
     // Check on our database
+    include('config.php');
+
+    $query = mysql_query("SELECT * FROM 'wikimaps_db' WHERE pageid=". $outp["pageid"] ."") or trigger_error(mysql_error());
+
+    if(mysqli_num_rows($query) > 0){    
+
+        // exists on our database
+
+        $row = mysql_fetch_array($query);
+        $outp["lat"] = $row['latitude'];
+        $outp["lon"] = $row['longitude'];
+
+        echo json_encode($outp);        // return 
+
+    }else{
+
+        // Not found, start search algorithm
+
+        
 
 
-    // If not found start search algorithm
 
-    // Update database
+        // Update database
+        
+    }
+
+
 
 }
-
 
 
 ?>

@@ -57,12 +57,10 @@ if ( isset($outp["lat"]) ){   // Check if the page was geolocated
     }else{
 
         // Not found, start search algorithm
-
-        
-
-
+        include('locate_plus.php');
 
         // Update database
+        include('new.php');
         
     }
 

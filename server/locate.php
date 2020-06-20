@@ -50,6 +50,9 @@ if ( isset($outp["lat"]) ){   // Check if the page was geolocated
         // exists on our database
 
         $row = mysqli_fetch_array($query, MYSQLI_ASSOC);
+        mysqli_free_result($query);
+        mysqli_close($db_connect);
+
         $outp["lat"] = $row['latitude'];
         $outp["lon"] = $row['longitude'];
 

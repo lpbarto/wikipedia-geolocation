@@ -25,27 +25,28 @@ foreach( $result["query"]["pages"] as $k => $v ) {
 
     $outp = array(              // array to return to the client
         "pageid" => $v["pageid"],
+        "title" => $v["title"],
         "lat" => $v["coordinates"][0]["lat"],
-        "lon" => $v["coordinates"][0]["lon"]
+        "lon" => $v["coordinates"][0]["lon"],
     );
 
 }
 
-
+echo("\n Controllo se geolocalizzata su wiki \n");    //TEST
 
 if ( isset($outp["lat"]) ){   // Check if the page was geolocated
-
+    echo("\n Era geolocalizzata su wiki \n");    //TEST
     echo json_encode($outp); // Convert output obj to json and return it
 
 }else{
-
+    echo("\n NON era geolocalizzata su wiki, cerco su db \n");    //TEST
     // Check on our database
     include('config.php');
 
     $query = mysql_query("SELECT * FROM 'wikimaps_db' WHERE pageid=". $outp["pageid"] ."") or trigger_error(mysql_error());
 
     if(mysqli_num_rows($query) > 0){    
-
+        echo("\n Esiste su db \n");    //TEST
         // exists on our database
 
         $row = mysql_fetch_array($query);
@@ -55,7 +56,7 @@ if ( isset($outp["lat"]) ){   // Check if the page was geolocated
         echo json_encode($outp);        // return 
 
     }else{
-
+        echo("\n NON esiste su db \n");    //TEST
         // Not found, start search algorithm
         include('locate_plus.php');
 

@@ -1,7 +1,7 @@
 <?php
 
 $sql="INSERT INTO wikimaps_db
-VALUES(‘”.$_varname.”’,’”.$_varlastname.”’,’”.$_varage.”',’”.$_varage.”',’”.$_varage.”',’”.$_varage.”')"; //da mettere valori corretti
+VALUES('".$outp["pageid"]."','".$outp["title"]."','".$outp["cat"]."','".$outp["lat"]."','".$outp["lon"]."')"; //da mettere valori corretti
 
 $retval=mysql_query($sql,$db_connect);
 if(! $retval ) {

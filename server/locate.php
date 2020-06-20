@@ -41,15 +41,15 @@ if ( isset($outp["lat"]) ){   // Check if the page was geolocated
 }else{
     echo("\n NON era geolocalizzata su wiki, cerco su db \n");    //TEST
     // Check on our database
-    include('config.php');
-
-    $query = mysql_query("SELECT * FROM 'wikimaps_db' WHERE pageid=". $outp["pageid"] ."") or trigger_error(mysql_error());
-
+    include 'config.php';
+    echo("\n config ok");    //TEST
+    $query = mysqli_query($db_connect, "SELECT * FROM wikimaps_db WHERE page_id=". $outp["pageid"]); 
+    echo("\n Query eseguita !");    //TEST
     if(mysqli_num_rows($query) > 0){    
         echo("\n Esiste su db \n");    //TEST
         // exists on our database
 
-        $row = mysql_fetch_array($query);
+        $row = mysqli_fetch_array($query, MYSQLI_ASSOC);
         $outp["lat"] = $row['latitude'];
         $outp["lon"] = $row['longitude'];
 

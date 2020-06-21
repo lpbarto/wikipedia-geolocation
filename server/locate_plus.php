@@ -1,5 +1,5 @@
 <?php
-$outp['title'] = "David (Michelangelo)";
+$outp['title'] = "Led Zeppelin";
 
 // search and set element's category
 include 'set_category.php';   
@@ -12,9 +12,6 @@ switch ($outp['cat']){
         $code = "P19";
         include 'locate_query.php';
         include 'update_coordinate.php';
-        break;
-    case "Q41176":
-        // attiva localizzazione buildings
         break;
     case "Q735":
         // attiva localizzazione arte
@@ -40,9 +37,19 @@ switch ($outp['cat']){
         include 'locate_query.php';
         include 'update_coordinate.php';
         break;
+    case "Q41176":
+        // attiva localizzazione buildings
+        break;
     default:
         echo("<p> si è un NULL </p>"); // TEST
         // attiva localizzazione generica
+        include 'locate_query_generic.php';
+        if(isset($coordinatesResult['results']['bindings'][0]['coordinate']['value'])){
+            echo("ho trovato qualcosa  ");
+            include 'update_coordinate.php';
+
+        }
+       
 
 }
 

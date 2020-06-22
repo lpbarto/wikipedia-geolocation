@@ -64,11 +64,13 @@ if ( isset($outp["lat"]) ){   // Check if the page was geolocated
         include('locate_plus.php');
 
         // Update database
-        include('new.php');
+        if ( $outp['lat'] != "NULL" && $outp['lon'] != "NULL") {    
+            include('new.php');
+        }
+
+        echo json_encode($outp);        // return   // se non è riuscito a geolocalizzarla lat e lon sono NULL
         
     }
-
-
 
 }
 

@@ -1,5 +1,5 @@
 <?php
-$outp['title'] = "Led Zeppelin";
+//$outp['title'] = "Led Zeppelin";
 
 // search and set element's category
 include 'set_category.php';   
@@ -47,7 +47,9 @@ switch ($outp['cat']){
         if(isset($coordinatesResult['results']['bindings'][0]['coordinate']['value'])){
             echo("ho trovato qualcosa  ");
             include 'update_coordinate.php';
-
+        }else{                   // NON riesce a geolocalizzarla
+            $outp['lat'] = "NULL";
+            $outp['lon'] = "NULL";
         }
        
 

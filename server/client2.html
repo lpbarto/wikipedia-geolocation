@@ -10,7 +10,20 @@
 
 <script>
 var obj, param, xmlhttp;
-obj = { "title":"Leonardo da Vinci" };
+
+obj = { "lat": 43.7714,
+        "lon": 11.2542,
+        "radius": 50,
+        "limit": 10,
+        "filters": {
+            "all": 0,
+            "humans": 1 ,
+            "buildings": 0 ,
+            "art": 0 ,
+            "business": 0
+        } 
+        };
+
 param = JSON.stringify(obj);
 xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
@@ -18,7 +31,7 @@ xmlhttp.onreadystatechange = function() {
     document.getElementById("demo").innerHTML = this.responseText;
   }
 };
-xmlhttp.open("GET", "locate.php?x=" + param, true);
+xmlhttp.open("GET", "find_pages.php?x=" + param, true);
 xmlhttp.send();
 </script>
 

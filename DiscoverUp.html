@@ -7,26 +7,51 @@
     <meta name="keywords" content="demo, website, PPM">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="stylesheet" type="text/css" href="style/main.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
-
-    <style>
-        #map {position: absolute; top: 0; bottom: 0; left: 0; right: 0;}
-    </style>
 
 </head>
 
 <body>
 
+    <div id="box">
+        <div id="searchBox">
+            <div id="searchbar">
+                <div id="search">
+                    <p>search</p>
+                </div>
+                <div id="button">
+                    <p>s</p>
+                </div>
+            </div>
+            <div id="option">
+                <p>option</p>
+            </div>
+        </div>
+    </div>
+
     <div id="map"></div>
 
     <script>
-        var map = L.map('map').setView([43.77, 11.25], 5);
+        var map = L.map('map', { zoomControl: false }).setView([43.77, 11.25], 5);
+        new L.Control.Zoom({ position: 'topright' }).addTo(map);
         L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=BlBYhbJ1lYy0qQkYSJWE', {
             attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
         }).addTo(map);
 
         var marker = L.marker([43.77, 11.25]).addTo(map);
+
+        var popup = L.popup();
+
+        function onMapClick(e) {
+            popup
+                .setLatLng(e.latlng)
+                .setContent("You clicked the map at " + e.latlng.toString())
+                .openOn(map);
+        }
+
+        map.on('click', onMapClick);
     </script>
 
  

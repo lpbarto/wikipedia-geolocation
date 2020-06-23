@@ -1,0 +1,46 @@
+html, body{
+    height: 100%;
+}
+
+.hero{
+    height: 100vh;
+    background-color: #b3b1b1;
+}
+
+.grafica{
+    position: relative;
+}
+
+svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: auto;
+  }
+
+
+.st0{fill:#0F564F;}
+	.st1{fill:#137167;}
+	.st2{fill:#11675E;}
+	.st3{fill:#178B7F;}
+	.st4{fill:#96702A;}
+	.st5{fill:#CB9839;}
+	.st6{fill:#838383;}
+	.st7{fill:#1C3056;}
+	.st8{fill:#EBEBEB;}
+	.st9{fill:#1BA193;}
+	.st10{fill:#EBAF42;}
+	.st11{fill:#862C23;}
+	.st12{fill:#DD493A;}
+	.st13{fill:#812B22;}
+	.st14{enable-background:new    ;}
+	.st15{fill:#8A8A8A;}
+	.st16{fill:#858585;}
+	.st17{fill:#C2C2C2;}
+	.st18{fill:#FBFBFB;}
+	.st19{fill:#8C8C8C;}
+	.st20{fill:#949494;}
+	.st21{fill:#F6F6F6;}
+	.st22{fill:#8F8F8F;}
+
+

@@ -6,9 +6,44 @@ let tl = gsap.timeline({
       scrub: true,
       pin: true,
       anticipatePin: 1,
-      markers: true
+    //   markers: true
     }
   });
+
+  let tl2 = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".pinna",
+      start: "top top",
+      end: "+=3000px bottom",
+      scrub: true,
+      pin: true,
+      anticipatePin: 1,
+    //   markers: true
+    }
+  });
+
+  tl2.from("#text1", {
+      opacity:0,
+      y:400,
+      duration:2
+    })
+    .from("#text2", {
+        opacity:0,
+        y:400,
+        duration:8
+    })
+    .from("#text3", {
+        opacity:0,
+        y:400,
+        delay:2,
+        duration:6
+    })
+    .from("#text4", {
+        opacity:0,
+        y:400,
+        duration:2
+    });
+    
 
   tl.from("#Searchbar",  { 
           scale: 2,

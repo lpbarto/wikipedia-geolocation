@@ -33,8 +33,8 @@ if ($obj->filters->all != 1){
     $mydb_cat_string = substr($mydb_cat_string, 0, -1);
     $mydb_cat_string .= ")";
 }
-echo ("<p>   STRINGA CAT   ".$cat_string."   </p>"); // TEST
-echo ("<p>   STRINGA MYDB CAT   ".$mydb_cat_string."   </p>"); // TEST
+// echo ("<p>   STRINGA CAT   ".$cat_string."   </p>"); // TEST
+// echo ("<p>   STRINGA MYDB CAT   ".$mydb_cat_string."   </p>"); // TEST
 include 'SPARQLQueryDispatcher.php';
 include 'find_pages_query.php';  // execute query
 
@@ -50,7 +50,7 @@ $qry = "SELECT *
         WHERE distance <= ".$radius." $mydb_cat_string
         ORDER BY distance
         LIMIT $limit";
-echo ("<p>   LA MIA QUETY   ".$qry."   </p>"); // TEST
+// echo ("<p>   LA MIA QUETY   ".$qry."   </p>"); // TEST
 $query = mysqli_query($db_connect, $qry); 
 $right = mysqli_fetch_all($query, MYSQLI_ASSOC);
 mysqli_free_result($query);
@@ -59,22 +59,22 @@ mysqli_close($db_connect);
 // Merge results from wikidata database and my database
 $res = array();
 $left = $placeQueryResult['results']['bindings'];
-echo("<p>  placeQueryResult  </p>");
-echo json_encode($placeQueryResult); 
-echo("<p>  FINE placeQueryResult </p>");
-echo("<p>  LEFT  </p>");
-echo json_encode($left); 
-echo("<p>  FINE LEFT </p>");
+// echo("<p>  placeQueryResult  </p>");
+// echo json_encode($placeQueryResult); 
+// echo("<p>  FINE placeQueryResult </p>");
+// echo("<p>  LEFT  </p>");
+// echo json_encode($left); 
+// echo("<p>  FINE LEFT </p>");
 
 $i=0;
 $j=0;
 $k=0;
-echo("<p>  lunghezza left </p>");
-echo count($left); 
-echo("<p>  FINE lunghezza left </p>");
-echo("<p>  lunghezza right </p>");
-echo count($right); 
-echo("<p>  FINE lunghezza right </p>");
+// echo("<p>  lunghezza left </p>");
+// echo count($left); 
+// echo("<p>  FINE lunghezza left </p>");
+// echo("<p>  lunghezza right </p>");
+// echo count($right); 
+// echo("<p>  FINE lunghezza right </p>");
 
 while ( $i < count($left) && $j < count($right) && $k < $limit){
 
@@ -111,7 +111,7 @@ while($j < count($right) && $k < $limit){
     $j++;
     $k++;
 }
-echo("<p>  RISULTATO FINALE  </p>");
+// echo("<p>  RISULTATO FINALE  </p>");
 echo json_encode($res); 
-echo("<p>  FINE RISULTATO FINALE  </p>");
+// echo("<p>  FINE RISULTATO FINALE  </p>");
 ?>

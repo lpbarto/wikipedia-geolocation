@@ -64,6 +64,8 @@
             lon = e.latlng.lng;
         }
 
+        var markers = new Array();
+
         function search2(){
             
             var obj, param, xmlhttp;
@@ -82,21 +84,28 @@
                 };
 
             console.log(obj);
-
+            for(x in markers){
+                map.removeLayer(markers[x]);
+            }
             param = JSON.stringify(obj);
             xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
+                    console.log("il server ha risposto");
+                    console.log(this.responseText);
+                    
+
                 myObj = JSON.parse(this.responseText);
-                var markers = new Array();
+                console.log(myObj);
+                
                 for (x in myObj) {
-                 markers[x] = L.marker([myObj[x].lat, myObj[x].lon]).addTo(mymap);
-                 markers[x].bindPopup("<a href='https://it.wikipedia.org/wiki/" + myObj[x].title.replace(/ /g,"_") +"'>" + myObj[x].title + "</a>").openPopup();
-            }
+                 markers[x] = L.marker([myObj[x].lat, myObj[x].lon]).addTo(map);
+                 markers[x].bindPopup("<a target='_blank' href='https://it.wikipedia.org/wiki/" + myObj[x].title.replace(/ /g,"_") +"'>" + myObj[x].title + "</a>").openPopup();
+            }}
             };
-            xmlhttp.open("GET", "find_pages.php?x=" + param, true);
+            xmlhttp.open("GET", "server/find_pages.php?x=" + param, true);
             xmlhttp.send();
-        }
+        
     }
 
         function setOption(option){

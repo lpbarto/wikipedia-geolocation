@@ -22,7 +22,7 @@ SPARQL;
 $queryDispatcher = new SPARQLQueryDispatcher($endpointUrl);
 $placeQueryResult = $queryDispatcher->query($sparqlQueryString);
 
-echo("<p> sono in    find_pages_query    ");
-var_export($placeQueryResult);
-echo("     Fine find_pages_query  </p>");
+// echo("<p> sono in    find_pages_query    ");
+// var_export($placeQueryResult);
+// echo("     Fine find_pages_query  </p>");
 ?>

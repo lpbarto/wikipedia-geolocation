@@ -50,7 +50,7 @@ small, .text_small {font-size: 0.8em;}
     position: absolute;
 }
 
-.pinna{
+.pinna, .pinna2{
     height: 100vh;
 }
 
@@ -62,9 +62,9 @@ svg {
     margin: auto;
 }
 
-
-
-
+#Cerchio{
+	opacity: 0.4;
+}
 
 .st0{fill:#0F564F;}
 	.st1{fill:#137167;}
@@ -90,4 +90,11 @@ svg {
 	.st21{fill:#F6F6F6;}
 	.st22{fill:#8F8F8F;}
 
-
+	
+	.st23{fill:#E24A3B;}
+	.st24{fill:#78281F;}
+	.st25{fill:#862C23;}
+	.st26{fill:#DD493A;}
+	.st27{fill:#812B22;}
+	.st28{fill:#DE493A;}
+	.st29{fill:#E44B3B;}

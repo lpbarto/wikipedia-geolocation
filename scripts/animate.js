@@ -96,10 +96,73 @@ let tl = gsap.timeline({
     });
 
 
+    let tl3 = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".pinna2",
+          start: "top top",
+          end: "+=3000px bottom",
+          scrub: true,
+          pin: true,
+          anticipatePin: 1,
+        //   markers: true
+        }
+      });
+    
+      let tl4 = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".pinna2",
+          start: "top top",
+          end: "+=3000px bottom",
+          scrub: true,
+          pin: true,
+          anticipatePin: 1,
+        //   markers: true
+        }
+      });
 
- /* 
- .from("#Pin",  { y: -200 }, 0)
-  .to("#Pin",  { y: 0 }, 0)
-  .to("#Searchbar", { y:  0 }, 0)
-  .to("#Botticelli", { y: 0 }, 0)
-  */
+      tl3.from("#text5", {
+        opacity:0,
+        y:400,
+        duration:2
+      })
+      .from("#text6", {
+          opacity:0,
+          y:400,
+          duration:8
+      })
+      .from("#text7", {
+          opacity:0,
+          y:400,
+          delay:2,
+          duration:6
+      })
+      .from("#text8", {
+          opacity:0,
+          y:400,
+          duration:2
+      })
+      .from("#text9", {
+        opacity:0,
+        y:400,
+        duration:2
+    });
+
+      tl4.from("#Cerchio", {
+          scale: 0,
+      })
+      .to("#Cerchio", {
+          scale:1
+      })
+      .from("#Pin1", {
+          opacity:0,
+          y:-100
+      })
+      .from("#Pin2", {
+        opacity:0,
+        y:-100
+    })
+    .from("#Pin3", {
+        opacity:0,
+        y:-100
+    });
+    

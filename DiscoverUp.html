@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>WikiMaps</title>
+    <meta name="description" content="DiscoverUp">
+    <meta name="keywords" content="demo, website, PPM">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="style/main.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+
+</head>
+
+<body>
+
+    <div id="box">
+        <div id="searchBox">
+            <div id="searchBar">
+                <div id="search">
+                    <input id="text1", placeholder="location">
+                </div>
+                <div id="button">
+                    <button onclick="search1()" id="bt"> click me </button>
+                </div>
+            </div>
+            <div id="option">
+                OPTION: <br />
+                <input type="checkbox", onchange="tickOnAll()", id="all", value="all", checked/> All <br />
+                <input type="checkbox", onchange="tickOnRest()", id="building", value="building", tabindex="1"/> Building <br />
+                <input type="checkbox", onchange="tickOnRest()", id="person", value="person", tabindex="1"/> Person <br />
+                <input type="checkbox", onchange="tickOnRest()", id="company", value="company", tabindex="1"/> Company <br />
+                <input type="checkbox", onchange="tickOnRest()", id="art", value="art", tabindex="1"/> Art <br />
+                <input type="range", oninput="getRadius()", id="radius", min="1", max="100", value="10"/><br />
+                <p>Radius: <span id="valueR">10 km</span></p>
+                <input type="range", oninput="getNel()", id="Nel", min="1", max="20", value="10"/><br />
+                <p>Number of element: <span id="valueNel">10</span></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="map"></div>
+
+    <script>
+        var map = L.map('map', { zoomControl: false }).setView([43.77, 11.25], 5);
+        new L.Control.Zoom({ position: 'topright' }).addTo(map);
+        L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=BlBYhbJ1lYy0qQkYSJWE', {
+            attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
+            maxZoom: 18, minZoom: 2
+        }).addTo(map);
+
+        var popup = L.popup();
+        
+        var lat;
+        var lon;
+
+        function onMapClick(e) {
+            popup
+            .setLatLng(e.latlng)
+            .setContent("Click <b onclick ='search2()'>here</b> to start the search from here ")
+            .openOn(map);
+            lat = e.latlng.lat;
+            lon = e.latlng.lng;
+        }
+
+        function search2(){
+            
+            var obj, param, xmlhttp;
+
+            obj = { "lat": lat,
+                    "lon": lon,
+                    "radius": radius.value,
+                    "limit": Nel.value,
+                    "filters": {
+                        "all": setOption("all"),
+                        "humans": setOption("person") ,
+                        "buildings": setOption("building") ,
+                        "art": setOption("art") ,
+                        "business": setOption("company")
+                    } 
+                };
+
+            console.log(obj);
+
+            param = JSON.stringify(obj);
+            xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                myObj = JSON.parse(this.responseText);
+                var markers = new Array();
+                for (x in myObj) {
+                 markers[x] = L.marker([myObj[x].lat, myObj[x].lon]).addTo(mymap);
+                 markers[x].bindPopup("<a href='https://it.wikipedia.org/wiki/" + myObj[x].title.replace(/ /g,"_") +"'>" + myObj[x].title + "</a>").openPopup();
+            }
+            };
+            xmlhttp.open("GET", "find_pages.php?x=" + param, true);
+            xmlhttp.send();
+        }
+    }
+
+        function setOption(option){
+            if(document.getElementById(option).checked){
+                return 1;
+            }
+            else{
+                return 0;
+            }
+
+        }
+
+        function search1(){
+            var location = document.getElementById("text1").value;
+            alert("you wrote: "+ location);
+            getLocation();
+        }
+
+        function tickOnAll() {
+            if (document.getElementById("all").checked) {
+                    document.getElementById("person").checked = false;
+                    document.getElementById("building").checked = false;
+                    document.getElementById("company").checked = false;
+                    document.getElementById("art").checked = false;
+            }
+        }
+
+        function tickOnRest() {
+                if (document.getElementById("person").checked) {
+                        document.getElementById("all").checked = false;
+                }
+                if (document.getElementById("building").checked) {
+                        document.getElementById("all").checked = false;
+                }
+                if (document.getElementById("company").checked) {
+                        document.getElementById("all").checked = false;
+                }
+                if (document.getElementById("art").checked) {
+                        document.getElementById("all").checked = false;
+                }
+        }
+
+        function getRadius(){
+            var radius = document.getElementById("radius").value;
+            var valueR = document.getElementById("valueR");
+            valueR.innerHTML = radius + " km";
+        }
+
+        function getNel(){          
+            var Nel = document.getElementById("Nel").value;
+            var valueNel = document.getElementById("valueNel");
+            valueNel.innerHTML = Nel ;
+        }
+
+        map.on('click', onMapClick);
+        popup.on('click', search2);
+
+
+
+
+    </script>
+ 
+
+</body>
+
+
+
+
+
+
+</html>

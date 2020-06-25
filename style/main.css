@@ -1,0 +1,41 @@
+/* CSS file instruction */
+
+body {
+    font-size: 16px;
+}
+
+#map {
+    position: absolute;
+    top: 0;
+    bottom: 0; 
+    left: 0; 
+    right: 0;
+    z-index: 0;
+}
+
+#box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100px;
+    z-index: 1;
+}
+
+#searchBox {
+    position: relative;
+    left: 8px;
+    top: 8px;
+    bottom: 8px; 
+    background-color: white;
+}
+
+#search {
+    float:left;
+    width: 70%;
+}
+
+#button {
+    float:left;
+    width: 30%;
+}

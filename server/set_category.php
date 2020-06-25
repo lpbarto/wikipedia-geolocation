@@ -22,37 +22,37 @@ SPARQL;
 $queryDispatcher = new SPARQLQueryDispatcher($endpointUrl);
 $queryResult = $queryDispatcher->query($sparqlQueryString);
 
-var_export($queryResult);  //forse non serve
+// var_export($queryResult);  //forse non serve
 
 include 'categories.php';
-echo("<p> Includo Categorie </p>"); // TEST 
+// echo("<p> Includo Categorie </p>"); // TEST 
 $elementi = array();
 foreach ( $queryResult['results']['bindings'] as $a => $b){
 
     array_push($elementi, $b['instance']['value'], $b['class']['value']);
   
 }
-var_export($elementi);  // TEST stampo array elementi
+// var_export($elementi);  // TEST stampo array elementi
 
   // assegno categoria giusta
 if ( count(array_intersect($elementi, $isHuman)) > 0 ){
-    echo("<p> human ok </p>"); // TEST 
+    // echo("<p> human ok </p>"); // TEST 
     $outp['cat'] = "Q5";
 }elseif( count(array_intersect($elementi, $isBuilding)) > 0 ){
-    echo("<p> bulding ok </p>"); // TEST 
+    // echo("<p> bulding ok </p>"); // TEST 
     $outp['cat'] = "Q41176";
 }elseif( count(array_intersect($elementi, $isArt)) > 0 ){
-    echo("<p> art ok </p>"); // TEST 
+    // echo("<p> art ok </p>"); // TEST 
     $outp['cat'] = "Q735";
 }elseif( count(array_intersect($elementi, $isBusiness)) > 0 ){
-    echo("<p> business ok </p>"); // TEST 
+    // echo("<p> business ok </p>"); // TEST 
     $outp['cat'] = "Q4830453";
 }else{
-    echo("<p> NULL ok </p>"); // TEST 
+    // echo("<p> NULL ok </p>"); // TEST 
     $outp['cat'] = "NULL";
 }
 
-echo("<p> stampo categoria finale" .$outp['cat']. "</p>"); // TEST stampo categoria finale 
+// echo("<p> stampo categoria finale" .$outp['cat']. "</p>"); // TEST stampo categoria finale 
 
 
 ?>

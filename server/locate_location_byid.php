@@ -10,7 +10,7 @@ SPARQL;
 $queryDispatcher = new SPARQLQueryDispatcher($endpointUrl);
 $coordinatesResult = $queryDispatcher->query($sparqlQueryString);
 
-echo("<p>    Sono in locatequery by id   ");
-var_export($coordinatesResult);
-echo("    Fine locatequery by id     </p>");
+// echo("<p>    Sono in locatequery by id   ");
+// var_export($coordinatesResult);
+// echo("    Fine locatequery by id     </p>");
 ?>

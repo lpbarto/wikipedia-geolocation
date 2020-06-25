@@ -20,8 +20,8 @@ $queryDispatcher = new SPARQLQueryDispatcher($endpointUrl);
 $coordinatesResult = $queryDispatcher->query($sparqlQueryString);
 
 
-echo("<p>    Sono in locatequery generic    ");
-var_export($coordinatesResult);
-echo("     Fine locatequery generic  </p>");
+// echo("<p>    Sono in locatequery generic    ");
+// var_export($coordinatesResult);
+// echo("     Fine locatequery generic  </p>");
 
 ?>

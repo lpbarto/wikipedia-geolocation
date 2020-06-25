@@ -45,7 +45,7 @@
         var research;
 
         function search(){
-            research = document.getElementById("text1");
+            research = document.getElementById("text1").value;
             var obj, param, xmlhttp;
             obj = { "title": research };
             console.log(obj.title);
@@ -53,10 +53,13 @@
             xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                marker = L.marker([obj.lat, obj.lon]).addTo(map);
+                console.log(this.responseText);
+                myObj = JSON.parse(this.responseText);
+                console.log(myObj);
+                marker = L.marker([myObj.lat, myObj.lon]).addTo(map);
             }
             };
-            xmlhttp.open("GET", "locate.php?x=" + param, true);
+            xmlhttp.open("GET", "server/locate.php?x=" + param, true);
             xmlhttp.send();
         }
 

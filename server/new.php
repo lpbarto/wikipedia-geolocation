@@ -7,10 +7,8 @@ VALUES('".$outp["pageid"]."','".$outp["title"]."','".$outp["cat"]."','".$outp["l
 
 $retval = mysqli_query($db_connect, $sql);
 if(! $retval ) {
-    die('Could not enter data: ' . mysqli_error());
- } else {
-    echo "Entered data successfully\n";
-}
+    consol.log('Could not enter data: ' . mysqli_error());
+ }
 
 mysqli_free_result($sql);
 mysqli_close($db_connect);

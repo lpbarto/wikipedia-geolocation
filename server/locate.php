@@ -32,21 +32,21 @@ foreach( $result["query"]["pages"] as $k => $v ) {
 
 }
 
-echo("\n Controllo se geolocalizzata su wiki \n");    //TEST
+// echo("\n Controllo se geolocalizzata su wiki \n");    //TEST
 
 if ( isset($outp["lat"]) ){   // Check if the page was geolocated
-    echo("\n Era geolocalizzata su wiki \n");    //TEST
+    // echo("\n Era geolocalizzata su wiki \n");    //TEST
     echo json_encode($outp); // Convert output obj to json and return it
 
 }else{
-    echo("\n NON era geolocalizzata su wiki, cerco su db \n");    //TEST
+    // echo("\n NON era geolocalizzata su wiki, cerco su db \n");    //TEST
     // Check on our database
     include 'config.php';
-    echo("\n config ok");    //TEST
+    // echo("\n config ok");    //TEST
     $query = mysqli_query($db_connect, "SELECT * FROM wikimaps_db WHERE page_id=". $outp["pageid"]); 
-    echo("\n Query eseguita !");    //TEST
+    // echo("\n Query eseguita !");    //TEST
     if(mysqli_num_rows($query) > 0){    
-        echo("\n Esiste su db \n");    //TEST
+        // echo("\n Esiste su db \n");    //TEST
         // exists on our database
 
         $row = mysqli_fetch_array($query, MYSQLI_ASSOC);
@@ -59,7 +59,7 @@ if ( isset($outp["lat"]) ){   // Check if the page was geolocated
         echo json_encode($outp);        // return 
 
     }else{
-        echo("\n NON esiste su db \n");    //TEST
+        // echo("\n NON esiste su db \n");    //TEST
         // Not found, start search algorithm
         include('locate_plus.php');
 

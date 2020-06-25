@@ -11,16 +11,16 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-sm navbar-light  sticky-top">
+    <nav class="navbar navbar-expand-sm navbar-light navbar-wikimaps sticky-top">
         <a href="#" class="navbar-brand"><img src="images/SVG/LogoPPM.svg" width="40" height="40"> Wiki Maps </a>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav">
-                <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
+                <li class="nav-item"><a href="#search-section " class="nav-link">Features</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Search</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Discover</a></li>
             </ul>
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item "> <a href="#" class="nav-link">Support</a> </li>
+                <li class="nav-item "> <a href="support.html" class="nav-link">Support</a> </li>
             </ul>
         </div>   
     </nav>
@@ -28,7 +28,7 @@
         <div class="col-sm-6"><a href="#"><img src="images/placeholder.jpg"  width="100%" height="700"></a></div>
         <div class="col-sm-6"><a href="#"><img src="images/placeholder.jpg" width="100%" height="700"></a></div>
     </div>
-    <br><br> <br><br> <br><br>
+    <br><br id="search-section"> <br><br> <br><br>
     <div class="row">
         <div class="col-sm-1"></div>
         <div class="col-sm-2"><h1>Search</h1></div>
@@ -84,30 +84,45 @@
 
     <br><br> <br><br> <br><br> <br><br> <br><br>
     
-    <div class="row" style="background-color:lightgray;">
-        <br><br><br>
+    <div class="row" id="choose-banner">
+        
         <div class="col-sm-1"></div>
         <div class="col-sm-6"> 
             <h5>
-            <br><br><br><br><br>
             Now that you know how it works, choose a mode and give it a try.
-            <br><br><br><br><br>
             </h5>
         </div>
         
         <div class="col-sm-1">
-            <br><br><br><br><br>
-            Search
-            <br><br><br><br><br>
+            <button type="button" class="btn btn-secondary" id="btn-choose-banner-search">Search</button>
         </div>
         <div class="col-sm-1"></div>
+
         <div class="col-sm-1">
-            <br><br><br><br><br>
-            Discover
-            <br><br><br><br><br>
+            <button type="button" class="btn btn-secondary" id="btn-choose-banner-discover">Discover</button>
         </div>
-        <br><br><br>
+        
     </div>
+
+    <div class="row align-items-center p-5">
+        <div class="col-sm-1 p-5"></div>
+        <div class="col-sm-2 text-center p-5"><h5>Mobile App</h5></div>
+        <div class="col-sm-2 text-center p-5"><h5>Community</h5></div>
+        <div class="col-sm-2 text-center p-5"><a href="#"><img src="images/SVG/LogoPPM.svg" width="100" height="100"></a></div>
+        <div class="col-sm-2 text-center p-5"><h5>Help Desk</h5></div>
+        <div class="col-sm-2 text-center p-5"><h5>Resources</h5></div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <footer class="container p-3">
+        <p class="text-muted">
+            © 2020-2021 Company, Inc. ·
+            <a href="#">Privacy</a>
+            " · " 
+            <a href="#">Terms</a>
+        </p>
+    </footer>
 
 
 </body>

@@ -1,24 +1,30 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400|Poppins:400');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400|Poppins:400");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap");
 html {
-	font-size: 100%;
-	height: 100%;
+  font-size: 100%;
+  height: 100%;
 } /*16px*/
 
 body {
   background-color: white;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
   line-height: 1.65;
   color: #333;
   height: 100%;
 }
 
-p {margin-bottom: 1.15rem;}
+p {
+  margin-bottom: 1.15rem;
+}
 
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
   margin: 2.75rem 0 1.05rem;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 400;
   line-height: 1.15;
 }
@@ -29,78 +35,147 @@ h1 {
 }
 
 h2 {
-	font-size: 2.441em;
-	font-weight: 800;
+  font-size: 2.441em;
+  font-weight: 800;
 }
 
-h3 {font-size: 1.953em;}
-
-h4 {font-size: 1.563em;}
-
-h5 {font-size: 1.25em;}
-
-small, .text_small {font-size: 0.8em;}
-
-.hero{
-    height: 100vh;
-    background-color: #b3b1b1;
+h3 {
+  font-size: 1.953em;
 }
 
-.grafica{
-    position: absolute;
+h4 {
+  font-size: 1.563em;
 }
 
-.pinna, .pinna2{
-    height: 100vh;
+h5 {
+  font-size: 1.25em;
+}
+
+small,
+.text_small {
+  font-size: 0.8em;
+}
+
+.hero {
+  height: 100vh;
+  background-color: #b3b1b1;
+}
+
+.grafica {
+  position: absolute;
+}
+
+.pinna,
+.pinna2 {
+  height: 100vh;
 }
 
 svg {
-    /* padding-top: 25%; */
-    width: 80%;
-    height: auto;
-    display: block;
-    margin: auto;
+  /* padding-top: 25%; */
+  width: 80%;
+  height: auto;
+  display: block;
+  margin: auto;
 }
 
-#Cerchio{
-	opacity: 0.4;
+#Cerchio {
+  opacity: 0.4;
 }
 
-.st0{fill:#0F564F;}
-	.st1{fill:#137167;}
-	.st2{fill:#11675E;}
-	.st3{fill:#178B7F;}
-	.st4{fill:#96702A;}
-	.st5{fill:#CB9839;}
-	.st6{fill:#838383;}
-	.st7{fill:#1C3056;}
-	.st8{fill:#EBEBEB;}
-	.st9{fill:#1BA193;}
-	.st10{fill:#EBAF42;}
-	.st11{fill:#862C23;}
-	.st12{fill:#DD493A;}
-	.st13{fill:#812B22;}
-	.st14{enable-background:new    ;}
-	.st15{fill:#8A8A8A;}
-	.st16{fill:#858585;}
-	.st17{fill:#C2C2C2;}
-	.st18{fill:#FBFBFB;}
-	.st19{fill:#8C8C8C;}
-	.st20{fill:#949494;}
-	.st21{fill:#F6F6F6;}
-	.st22{fill:#8F8F8F;}
+.st0 {
+  fill: #0f564f;
+}
+.st1 {
+  fill: #137167;
+}
+.st2 {
+  fill: #11675e;
+}
+.st3 {
+  fill: #178b7f;
+}
+.st4 {
+  fill: #96702a;
+}
+.st5 {
+  fill: #cb9839;
+}
+.st6 {
+  fill: #838383;
+}
+.st7 {
+  fill: #1c3056;
+}
+.st8 {
+  fill: #ebebeb;
+}
+.st9 {
+  fill: #1ba193;
+}
+.st10 {
+  fill: #ebaf42;
+}
+.st11 {
+  fill: #862c23;
+}
+.st12 {
+  fill: #dd493a;
+}
+.st13 {
+  fill: #812b22;
+}
+.st14 {
+  enable-background: new;
+}
+.st15 {
+  fill: #8a8a8a;
+}
+.st16 {
+  fill: #858585;
+}
+.st17 {
+  fill: #c2c2c2;
+}
+.st18 {
+  fill: #fbfbfb;
+}
+.st19 {
+  fill: #8c8c8c;
+}
+.st20 {
+  fill: #949494;
+}
+.st21 {
+  fill: #f6f6f6;
+}
+.st22 {
+  fill: #8f8f8f;
+}
 
-	
-	.st23{fill:#E24A3B;}
-	.st24{fill:#78281F;}
-	.st25{fill:#862C23;}
-	.st26{fill:#DD493A;}
-	.st27{fill:#812B22;}
-	.st28{fill:#DE493A;}
-	.st29{fill:#E44B3B;}
-
-
+.st23 {
+  fill: #e24a3b;
+}
+.st24 {
+  fill: #78281f;
+}
+.st25 {
+  fill: #862c23;
+}
+.st26 {
+  fill: #dd493a;
+}
+.st27 {
+  fill: #812b22;
+}
+.st28 {
+  fill: #de493a;
+}
+.st29 {
+  fill: #e44b3b;
+}
 
 @media (max-width: 768px) {
-	html { font-size: 80%; }
+  html {
+    font-size: 80%;
+  }
 }

@@ -140,12 +140,7 @@ let tl = gsap.timeline({
           opacity:0,
           y:400,
           duration:2
-      })
-      .from("#text9", {
-        opacity:0,
-        y:400,
-        duration:2
-    });
+      });
 
       tl4.from("#Cerchio", {
           scale: 0,

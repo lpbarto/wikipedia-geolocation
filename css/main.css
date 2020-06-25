@@ -98,3 +98,9 @@ svg {
 	.st27{fill:#812B22;}
 	.st28{fill:#DE493A;}
 	.st29{fill:#E44B3B;}
+
+
+
+@media (max-width: 768px) {
+	html { font-size: 80%; }
+}

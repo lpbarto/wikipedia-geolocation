@@ -69,13 +69,13 @@
                 if (myObj.lat == null){
                     popup = L.popup()
                         .setLatLng([43.77, 11.25])
-                        .setContent("Localization not found, <a target='_blank' href='https://it.wikipedia.org/wiki/" + myObj.title.replace(/ /g,"_") +"'>" + myObj[x].title + "</a>")
+                        .setContent("Localization not found, <a target='_blank' href='https://it.wikipedia.org/wiki/" + myObj.title.replace(/ /g,"_") +"'>" + myObj.title + "</a>")
                         .openOn(map);
                     map.setView([43.77, 11.25]);
                     //pagina trovata ma non localizzata
                 }
                 marker = L.marker([myObj.lat, myObj.lon]).addTo(map);
-                marker.bindPopup("<a target='_blank' href='https://it.wikipedia.org/wiki/" + myObj.title.replace(/ /g,"_") +"'>" + myObj[x].title + "</a>").openPopup();
+                marker.bindPopup("<a target='_blank' href='https://it.wikipedia.org/wiki/" + myObj.title.replace(/ /g,"_") +"'>" + myObj.title + "</a>").openPopup();
                 map.setView([myObj.lat, myObj.lon]);
             }
             };

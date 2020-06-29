@@ -51,6 +51,7 @@
         }).addTo(map);
 
         var popup = L.popup();
+        var circle = L.circle();
         
         var lat;
         var lon;
@@ -88,6 +89,7 @@
                 map.removeLayer(markers[x]);
             }
             map.removeLayer(popup);
+            map.removeLayer(circle);
             param = JSON.stringify(obj);
             xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
@@ -112,6 +114,12 @@
                     markers[x].bindPopup("<a target='_blank' href='https://it.wikipedia.org/wiki/" + myObj[x].title.replace(/ /g,"_") +"'>" + myObj[x].title + "</a>").openPopup();
                     }
                     map.setView([myObj[0].lat, myObj[0].lon]);
+                    circle = L.circle([lat, lon], {
+                        color: 'red',
+                        fillColor: '#f03',
+                        fillOpacity: 0.5,
+                        radius: radius.value * 1000
+                    }).addTo(map);
                 }
             }
             };

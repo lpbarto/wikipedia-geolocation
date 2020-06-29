@@ -87,6 +87,7 @@
             for(x in markers){
                 map.removeLayer(markers[x]);
             }
+            map.removeLayer(popup);
             param = JSON.stringify(obj);
             xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
@@ -97,11 +98,22 @@
 
                 myObj = JSON.parse(this.responseText);
                 console.log(myObj);
-                
-                for (x in myObj) {
-                 markers[x] = L.marker([myObj[x].lat, myObj[x].lon]).addTo(map);
-                 markers[x].bindPopup("<a target='_blank' href='https://it.wikipedia.org/wiki/" + myObj[x].title.replace(/ /g,"_") +"'>" + myObj[x].title + "</a>").openPopup();
-            }}
+
+                if (!Array.isArray(myObj) || !myObj.length) {
+                    popup = L.popup()
+                        .setLatLng([43.77, 11.25])
+                        .setContent("Nothing found")
+                        .openOn(map);
+                    map.setView([43.77, 11.25]);
+                }
+                else {
+                    for (x in myObj) {
+                    markers[x] = L.marker([myObj[x].lat, myObj[x].lon]).addTo(map);
+                    markers[x].bindPopup("<a target='_blank' href='https://it.wikipedia.org/wiki/" + myObj[x].title.replace(/ /g,"_") +"'>" + myObj[x].title + "</a>").openPopup();
+                    }
+                    map.setView([myObj[0].lat, myObj[0].lon]);
+                }
+            }
             };
             xmlhttp.open("GET", "server/find_pages.php?x=" + param, true);
             xmlhttp.send();

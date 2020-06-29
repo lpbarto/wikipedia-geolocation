@@ -143,6 +143,12 @@
                     document.getElementById("company").checked = false;
                     document.getElementById("art").checked = false;
             }
+            else {
+                if (document.getElementById("person").checked == false && document.getElementById("building").checked == false
+                 && document.getElementById("company").checked == false && document.getElementById("art").checked == false){
+                    document.getElementById("person").checked = true;
+                 }
+            }
         }
 
         function tickOnRest() {

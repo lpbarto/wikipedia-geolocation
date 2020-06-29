@@ -173,6 +173,7 @@
         }
 
         function getRadius(){
+            map.removeLayer(circle);
             var radius = document.getElementById("radius").value;
             var valueR = document.getElementById("valueR");
             valueR.innerHTML = radius + " km";
@@ -180,7 +181,7 @@
                         color: 'red',
                         fillColor: '#f03',
                         fillOpacity: 0.5,
-                        radius: radius.value * 1000
+                        radius: radius * 1000
                     }).addTo(map);
         }
 

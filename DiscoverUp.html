@@ -101,10 +101,10 @@
 
                 if (!Array.isArray(myObj) || !myObj.length) {
                     popup = L.popup()
-                        .setLatLng([43.77, 11.25])
+                        .setLatLng([lat, lon])
                         .setContent("Nothing found")
                         .openOn(map);
-                    map.setView([43.77, 11.25]);
+                    map.setView([lat, lon]);
                 }
                 else {
                     for (x in myObj) {

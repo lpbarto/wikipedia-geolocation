@@ -146,7 +146,7 @@
             else {
                 if (document.getElementById("person").checked == false && document.getElementById("building").checked == false
                  && document.getElementById("company").checked == false && document.getElementById("art").checked == false){
-                    document.getElementById("person").checked = true;
+                    document.getElementById("all").checked = true;
                  }
             }
         }
@@ -164,6 +164,10 @@
                 if (document.getElementById("art").checked) {
                         document.getElementById("all").checked = false;
                 }
+                if (document.getElementById("person").checked == false && document.getElementById("building").checked == false
+                 && document.getElementById("company").checked == false && document.getElementById("art").checked == false){
+                    document.getElementById("all").checked = true;
+                 }
         }
 
         function getRadius(){

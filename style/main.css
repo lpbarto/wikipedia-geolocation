@@ -43,3 +43,31 @@ body {
     position: relative;
     padding: 3%;
 }
+
+.loader{
+    margin: 0 0 2em;
+    height: 100px;
+    width: 100%;
+    text-align: center;
+    padding: 1em;
+    margin: 0 auto 1em;
+    display: none;
+    vertical-align: top;
+    z-index: 1000;
+    position: absolute;
+    top: 50%;
+  }
+  
+  /*
+    Set the color of the icon
+  */
+  svg path,
+  svg rect{
+    fill: #ff4800;
+  }
+
+  svg#loader-1{
+    background-color: rgba(0, 0, 0, 0.068);
+    width: 80px;
+    height: 80px;
+  }

@@ -48,8 +48,8 @@ switch ($outp['cat']){
             // echo("ho trovato qualcosa  ");
             include 'update_coordinate.php';
         }else{                   // NON riesce a geolocalizzarla
-            $outp['lat'] = "NULL";
-            $outp['lon'] = "NULL";
+            $outp['lat'] = null;
+            $outp['lon'] = null;
         }
        
 

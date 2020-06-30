@@ -13,35 +13,40 @@ body {
     z-index: 1;
 }
 
-#box {
+
+.dropdown {
+    z-index: 2;
     position: absolute;
     top: 8px;
     left: 8px;
-    width: 200px;
-    height: 275px;
-    z-index: 2;
-    background-color: white;
+    
 }
 
-#option {
-    padding: 5px;
+#optionS {
+    margin-bottom: 2px;
 }
 
 #resultBar {
     position: absolute;
-    top: 80px;
-    right: 5px;
-    width: 250px;
-    height: 80%;
+    top: 8px;
+    right: 208px;
+    left: auto;
     z-index: 2;
     display: none;
-    background-color: gray;
 }
 
 #resultBox {
     background-color: white;
     position: relative;
     padding: 3%;
+    width: 250px;
+    height: 80%;
+
+}
+
+#tendina {
+    background-color: gray;
+    text-align: center;
 }
 
 .loader{

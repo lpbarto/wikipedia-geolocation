@@ -29,8 +29,17 @@ body {
 
 #resultBar {
     position: absolute;
-    top: 100px;
-    right: 0px;
+    top: 80px;
+    right: 5px;
+    width: 250px;
+    height: 80%;
     z-index: 2;
     display: none;
+    background-color: gray;
+}
+
+#resultBox {
+    background-color: white;
+    position: relative;
+    padding: 3%;
 }

@@ -71,9 +71,6 @@
         var markers = new Array();
 
         function search(){
-            //test
-            showResultBar();
-            
             var obj, param, xmlhttp;
 
             obj = { "lat": lat,
@@ -117,6 +114,7 @@
                     for (x in myObj) {
                     markers[x] = L.marker([myObj[x].lat, myObj[x].lon]).addTo(map);
                     markers[x].bindPopup("<a target='_blank' href='https://it.wikipedia.org/wiki/" + myObj[x].title.replace(/ /g,"_") +"'>" + myObj[x].title + "</a>").openPopup();
+                    showResultBar(myObj[x]);
                     }
                     map.setView([myObj[0].lat, myObj[0].lon]);
                 }
@@ -193,22 +191,19 @@
         function showResultBar(){
             var myDiv = document.getElementById("resultBar");
             myDiv.style.display = "block";
+            var x = document.createElement("div");
+            x.id = "resultBox";
+            x.innerText = "<a target='_blank' href='https://it.wikipedia.org/wiki/" + data.title.replace(/ /g,"_") +"'>" + data.title + "</a>";
+            x.style.height = "50px";
+            var y = document.getElementById("resultBar");
+            y.appendChild(x);
         }
 
         map.on('click', onMapClick);
         popup.on('click', search);
 
-
-
-
     </script>
  
-
 </body>
-
-
-
-
-
 
 </html>

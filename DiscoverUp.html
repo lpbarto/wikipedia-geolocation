@@ -15,28 +15,24 @@
 
 <body>
 
-    <div id="box">
-        <div id="searchBox">
-            <div id="searchBar">
-                <div id="search">
-                    <input id="text1", placeholder="location">
-                </div>
-                <div id="button">
-                    <button onclick="search1()" id="bt"> click me </button>
-                </div>
-            </div>
-            <div id="option">
-                OPTION: <br />
-                <input type="checkbox", onchange="tickOnAll()", id="all", value="all", checked/> All <br />
-                <input type="checkbox", onchange="tickOnRest()", id="building", value="building", tabindex="1"/> Building <br />
-                <input type="checkbox", onchange="tickOnRest()", id="person", value="person", tabindex="1"/> Person <br />
-                <input type="checkbox", onchange="tickOnRest()", id="company", value="company", tabindex="1"/> Company <br />
-                <input type="checkbox", onchange="tickOnRest()", id="art", value="art", tabindex="1"/> Art <br />
-                <input type="range", oninput="getRadius()", id="radius", min="1", max="100", value="10"/><br />
-                <p>Radius: <span id="valueR">10 km</span></p>
-                <input type="range", oninput="getNel()", id="Nel", min="1", max="20", value="10"/><br />
-                <p>Number of element: <span id="valueNel">10</span></p>
-            </div>
+    <div id="box"> 
+        <div id="option">
+            OPTION: <br />
+            <input type="checkbox", onchange="tickOnAll()", id="all", value="all", checked/> All <br />
+            <input type="checkbox", onchange="tickOnRest()", id="building", value="building", tabindex="1"/> Building <br />
+            <input type="checkbox", onchange="tickOnRest()", id="person", value="person", tabindex="1"/> Person <br />
+            <input type="checkbox", onchange="tickOnRest()", id="company", value="company", tabindex="1"/> Company <br />
+            <input type="checkbox", onchange="tickOnRest()", id="art", value="art", tabindex="1"/> Art <br />
+            <p>Radius: <span id="valueR">10 km</span></p>
+            <input type="range", oninput="getRadius()", id="radius", min="1", max="100", value="10"/><br />
+            <p>Number of element: <span id="valueNel">10</span></p>
+            <input type="range", oninput="getNel()", id="Nel", min="1", max="20", value="10"/><br />
+        </div>    
+    </div>
+
+    <div id="resultBar">
+        <div id ="resultBox">
+            blabla
         </div>
     </div>
 
@@ -59,15 +55,24 @@
         function onMapClick(e) {
             popup
             .setLatLng(e.latlng)
-            .setContent("Click <b onclick ='search2()'>here</b> to start the search from here ")
+            .setContent("<b onclick ='search()'>Click the popup to start the search from here </b>")
             .openOn(map);
             lat = e.latlng.lat;
             lon = e.latlng.lng;
+            map.removeLayer(circle);
+            circle = L.circle([lat, lon], {
+                        color: 'red',
+                        fillColor: '#f03',
+                        fillOpacity: 0.5,
+                        radius: radius.value * 1000
+                    }).addTo(map);
         }
 
         var markers = new Array();
 
-        function search2(){
+        function search(){
+            //test
+            showResultBar();
             
             var obj, param, xmlhttp;
 
@@ -132,12 +137,6 @@
 
         }
 
-        function search1(){
-            var location = document.getElementById("text1").value;
-            alert("you wrote: "+ location);
-            getLocation();
-        }
-
         function tickOnAll() {
             if (document.getElementById("all").checked) {
                     document.getElementById("person").checked = false;
@@ -191,8 +190,13 @@
             valueNel.innerHTML = Nel ;
         }
 
+        function showResultBar(){
+            var myDiv = document.getElementById("resultBar");
+            myDiv.style.display = "block";
+        }
+
         map.on('click', onMapClick);
-        popup.on('click', search2);
+        popup.on('click', search);
 
 
 

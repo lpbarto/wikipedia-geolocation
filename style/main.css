@@ -10,34 +10,29 @@ body {
     bottom: 0; 
     left: 0; 
     right: 0;
-    z-index: 0;
+    z-index: 1;
 }
 
 #box {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 200px;
-    height: 100px;
-    z-index: 1;
-}
-
-#searchBox {
-    position: relative;
-    left: 8px;
     top: 8px;
-    bottom: 8px; 
+    left: 8px;
+    width: 200px;
+    height: 275px;
+    z-index: 2;
     background-color: white;
 }
 
-#search {
-    float:left;
-    width: 70%;
+#option {
+    padding: 5px;
 }
 
-#button {
-    float:left;
-    width: 30%;
+#resultBar {
+    position: absolute;
+    top: 100px;
+    right: 0px;
+    z-index: 2;
+    display: none;
 }
 
 .loader{

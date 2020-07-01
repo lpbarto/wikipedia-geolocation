@@ -33,16 +33,17 @@ body {
     width: 30%;
 }
 
+
 .dropdown {
     z-index: 2;
     position: absolute;
     top: 8px;
-    left: 8px;
-    
+    left: 8px; 
+    width: 100px;
 }
 
 #resultMenu {
-    max-height: 500px;
+    max-height: 400px;
     overflow-y: auto;
 }
 
@@ -50,21 +51,22 @@ body {
     margin-bottom: 2px;
 }
 
-#resultBar {
+.dropleft {
     position: absolute;
-    top: 25px;
-    right: 250px;
+    top: 50px;
+    right: 8px;
     left: auto;
     z-index: 2;
     display: none;
 }
 
-#resultBox {
-    background-color: white;
-    position: relative;
-    padding: 3%;
-    width: 250px;
-    height: 80%;
+#resultBar {
+    position: absolute;
+    top: 80px;
+    right: 0px;
+    left: auto;
+    z-index: 2;
+    display: none;
 }
 
 .leaflet-popup-content:hover{
@@ -97,4 +99,14 @@ body {
     background-color: rgba(0, 0, 0, 0.068);
     width: 80px;
     height: 80px;
+  }
+
+
+  /* settings for mobiles */
+
+  @media all and (max-width: 499px) {
+    #resultMenu {
+        max-height: 200px;
+        overflow-y: auto;
+    }
   }

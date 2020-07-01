@@ -65,11 +65,12 @@
         </div>
     </div>
 
-    <div class="btn-group dropleft", id="resultBar">
+    <div class="btn-group dropup", id="resultBar">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Results:
         </button> 
         <div class="dropdown-menu" id="resultMenu" aria-labelledby="dropdownMenuButton">
+            <div> blabla</div>
         </div>
     </div>
 
@@ -98,6 +99,13 @@
             maxZoom: 18, minZoom: 2
         }).addTo(map);
 
+        function clearResultBar() { 
+            var e = document.getElementById("resultMenu"); 
+            e.innerHTML = ""; 
+            var menu = document.getElementById("resultBar");
+            menu.style.display = "none"
+        }
+
         var popup = L.popup();
         var circle = L.circle();
         
@@ -105,7 +113,6 @@
         var lon;
 
         function onMapClick(e) {
-            testShow();
             popup
             .setLatLng(e.latlng)
             .setContent("<b onclick ='search()'>Click the popup to start the search from here </b>")
@@ -124,6 +131,8 @@
         var markers = new Array();
 
         function search(){
+            clearResultBar();
+
             var obj, param, xmlhttp;
 
             obj = { "lat": lat,
@@ -246,17 +255,6 @@
             var Nel = document.getElementById("Nel").value;
             var valueNel = document.getElementById("valueNel");
             valueNel.innerHTML = Nel ;
-        }
-
-        function testShow(){
-            var myDiv = document.getElementById("resultBar");
-            myDiv.style.display = "block";
-            var z = document.createElement("div");
-            z.className = "form-group form-check dropdown-item";
-            z.id ="optionS";
-            z.innerHTML = "<a href='#'> this is a new div&link </a>";
-            var w = document.getElementById("resultMenu");
-            w.appendChild(z);
         }
 
         function showResultBar(data){

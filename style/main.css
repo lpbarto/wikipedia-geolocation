@@ -51,19 +51,18 @@ body {
     margin-bottom: 2px;
 }
 
-.dropleft {
+.dropup {
     position: absolute;
-    top: 50px;
-    right: 8px;
-    left: auto;
+    bottom: 0px;
+    left: 50%;
     z-index: 2;
     display: none;
 }
 
 #resultBar {
     position: absolute;
-    top: 80px;
-    right: 0px;
+    bottom: 0px;
+    right: 120px;
     left: auto;
     z-index: 2;
     display: none;
@@ -108,5 +107,14 @@ body {
     #resultMenu {
         max-height: 200px;
         overflow-y: auto;
+    }
+ 
+    #resultBar {
+        position: absolute;
+        bottom: 0px;
+        left: 40%;
+        right:auto;
+        z-index: 2;
+        display: none;
     }
   }

@@ -13,6 +13,25 @@ body {
     z-index: 1;
 }
 
+#searchBox {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 2;
+    width: 200px;
+}
+
+#search {
+    position: relative;
+    float: left;
+    width: 70%;
+}
+
+#button {
+    position: relative;
+    float: left;
+    width: 30%;
+}
 
 .dropdown {
     z-index: 2;
@@ -22,14 +41,19 @@ body {
     
 }
 
+#resultMenu {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
 #optionS {
     margin-bottom: 2px;
 }
 
 #resultBar {
     position: absolute;
-    top: 8px;
-    right: 208px;
+    top: 25px;
+    right: 250px;
     left: auto;
     z-index: 2;
     display: none;
@@ -41,12 +65,10 @@ body {
     padding: 3%;
     width: 250px;
     height: 80%;
-
 }
 
-#tendina {
-    background-color: gray;
-    text-align: center;
+.leaflet-popup-content:hover{
+    cursor: pointer;
 }
 
 .loader{

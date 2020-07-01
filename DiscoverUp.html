@@ -68,12 +68,8 @@
     <div class="dropdown", id="resultBar">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Results:
-        </button>
-        <div class="dropdown-menu show" id="resultMenu" aria-labelledby="dropdownMenuButton">
-            <div class="form-group form-check dropdown-item" id="optionS">
-                <input type="checkbox", class="form-check-input", onchange="tickOnAll()", id="all", value="all", checked/>
-                <label class="form-check-label" for="all">All</label>
-            </div>
+        </button> 
+        <div class="dropdown-menu" id="resultMenu" aria-labelledby="dropdownMenuButton">
         </div>
     </div>
 
@@ -256,23 +252,22 @@
             var myDiv = document.getElementById("resultBar");
             myDiv.style.display = "block";
             var z = document.createElement("div");
-            z.class= "dropdown-item";
-            z.id = "resultBox";
-            z.innerText = "this is a new div";
-            z.style.height = "50px";
+            z.className = "form-group form-check dropdown-item";
+            z.id ="optionS";
+            z.innerHTML = "<a href='#'> this is a new div&link </a>";
             var w = document.getElementById("resultMenu");
             w.appendChild(z);
         }
 
-        function showResultBar(){
+        function showResultBar(data){
             var myDiv = document.getElementById("resultBar");
             myDiv.style.display = "block";
-            var x = document.createElement("div");
-            x.id = "resultBox";
-            x.innerText = "<a target='_blank' href='https://it.wikipedia.org/wiki/" + data.title.replace(/ /g,"_") +"'>" + data.title + "</a>";
-            x.style.height = "50px";
-            var y = document.getElementById("resultBar");
-            y.appendChild(x);
+            var z = document.createElement("div");
+            z.className = "form-group form-check dropdown-item";
+            z.id ="optionS";
+            z.innerHTML = "<a target='_blank' href='https://it.wikipedia.org/wiki/" + data.title.replace(/ /g,"_") +"'>" + data.title + "</a>";
+            var w = document.getElementById("resultMenu");
+            w.appendChild(z);
         }
 
         map.on('click', onMapClick);

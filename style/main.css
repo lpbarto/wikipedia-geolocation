@@ -1,0 +1,120 @@
+/* CSS file instruction */
+
+body {
+    font-size: 16px;
+}
+
+#map {
+    position: absolute;
+    top: 0;
+    bottom: 0; 
+    left: 0; 
+    right: 0;
+    z-index: 1;
+}
+
+#searchBox {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 2;
+    width: 200px;
+}
+
+#search {
+    position: relative;
+    float: left;
+    width: 70%;
+}
+
+#button {
+    position: relative;
+    float: left;
+    width: 30%;
+}
+
+
+.dropdown {
+    z-index: 2;
+    position: absolute;
+    top: 8px;
+    left: 8px; 
+    width: 100px;
+}
+
+#resultMenu {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+#optionS {
+    margin-bottom: 2px;
+}
+
+.dropup {
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    z-index: 2;
+    display: none;
+}
+
+#resultBar {
+    position: absolute;
+    bottom: 0px;
+    right: 120px;
+    left: auto;
+    z-index: 2;
+    display: none;
+}
+
+.leaflet-popup-content:hover{
+    cursor: pointer;
+}
+
+.loader{
+    margin: 0 0 2em;
+    height: 100px;
+    width: 100%;
+    text-align: center;
+    padding: 1em;
+    margin: 0 auto 1em;
+    display: none;
+    vertical-align: top;
+    z-index: 1000;
+    position: absolute;
+    top: 50%;
+  }
+  
+  /*
+    Set the color of the icon
+  */
+  svg path,
+  svg rect{
+    fill: #ff4800;
+  }
+
+  svg#loader-1{
+    background-color: rgba(0, 0, 0, 0.068);
+    width: 80px;
+    height: 80px;
+  }
+
+
+  /* settings for mobiles */
+
+  @media all and (max-width: 499px) {
+    #resultMenu {
+        max-height: 200px;
+        overflow-y: auto;
+    }
+ 
+    #resultBar {
+        position: absolute;
+        bottom: 0px;
+        left: 40%;
+        right:auto;
+        z-index: 2;
+        display: none;
+    }
+  }

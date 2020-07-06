@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>WikiMaps - Research</title>
+    <meta name="description" content="Research">
+    <meta name="keywords" content="demo, website, PPM">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="style/main.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+
+</head>
+
+<body>
+
+    <div id="box">
+        <div id="searchBox">
+            <div id="searchBar">
+                <div id="search">
+                    <input id="text1", placeholder="type something">
+                </div>
+                <div id="button">
+                    <button onclick="search()" id="bt"> search </button>
+                </div>
+            </div>
+        </div>            
+    </div>
+
+    <div class="loader" title="2">
+        <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           width="40px" height="40px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+        <path fill="#000" d="M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z">
+          <animateTransform attributeType="xml"
+            attributeName="transform"
+            type="rotate"
+            from="0 25 25"
+            to="360 25 25"
+            dur="0.6s"
+            repeatCount="indefinite"/>
+          </path>
+        </svg>
+    </div>
+    
+    <div id="map"></div>
+
+    <script>
+        var map = L.map('map', { zoomControl: false }).setView([43.77, 11.25], 5);
+        new L.Control.Zoom({ position: 'topright' }).addTo(map);
+        L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=BlBYhbJ1lYy0qQkYSJWE', {
+            attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
+            maxZoom: 18, minZoom: 2
+        }).addTo(map);
+
+        var popup = L.popup();
+        var marker = L.marker([0, 0]); 
+        var lat;
+        var lon;
+        var research;
+
+        function search(){
+            research = document.getElementById("text1").value;
+            var obj, param, xmlhttp;
+            obj = { "title": research };
+            console.log(obj.title);
+            param = JSON.stringify(obj);
+            xmlhttp = new XMLHttpRequest();
+            map.removeLayer(marker);
+            map.removeLayer(popup);
+            xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                //var load = document.getElementsByClassName('loader');
+                for(i = 0; i < load.length; i++) {
+                    load[i].style.display = 'none';
+                }
+                console.log(this.responseText);
+                myObj = JSON.parse(this.responseText);
+                console.log(myObj);
+                if (myObj.pageid == null){
+                    popup = L.popup()
+                        .setLatLng([43.77, 11.25])
+                        .setContent("Page not found")
+                        .openOn(map);
+                    map.setView([43.77, 11.25]);
+                    //ricerca senza successo, pagina non trovata
+                }else{
+                    if (myObj.lat == null){
+                    popup = L.popup()
+                        .setLatLng([43.77, 11.25])
+                        .setContent("Localization not found, <a target='_blank' href='https://it.wikipedia.org/wiki/" + myObj.title.replace(/ /g,"_") +"'>" + myObj.title + "</a>")
+                        .openOn(map);
+                    map.setView([43.77, 11.25]);
+                    //pagina trovata ma non localizzata
+                }else{
+                    marker = L.marker([myObj.lat, myObj.lon]).addTo(map);
+                marker.bindPopup("<a target='_blank' href='https://it.wikipedia.org/wiki/" + myObj.title.replace(/ /g,"_") +"'>" + myObj.title + "</a>").openPopup();
+                map.setView([myObj.lat, myObj.lon]);
+
+                }
+                }
+                
+                
+            }
+            };
+            xmlhttp.open("GET", "server/locate.php?x=" + param, true);
+            xmlhttp.send();
+            var load = document.getElementsByClassName('loader');
+            for(i = 0; i < load.length; i++) {
+                load[i].style.display = 'inline-block';
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

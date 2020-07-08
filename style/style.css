@@ -1,0 +1,17 @@
+#choose-banner{
+    background-color:lightgray;
+    padding: 100px 0 100px 0;
+}
+
+.navbar-wikimaps{
+    background-color: white;
+    padding: 10px 70px;
+}
+
+#btn-choose-banner-discover{
+    padding: 10px 40px;
+}
+
+#btn-choose-banner-search{
+    padding: 10px 40px;
+}

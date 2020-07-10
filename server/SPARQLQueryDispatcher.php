@@ -26,6 +26,10 @@ class SPARQLQueryDispatcher
 
         $url = $this->endpointUrl . '?query=' . urlencode($sparqlQuery);
         $response = file_get_contents($url, false, $context);
+        if ($response == null){
+            $response = ['results']['bindings'][0]['coordinate']['value'];
+
+        }
         return json_decode($response, true);
     }
 }

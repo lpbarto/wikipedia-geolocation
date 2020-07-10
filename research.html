@@ -93,7 +93,12 @@
                     load[i].style.display = 'none';
                 }
                 console.log(this.responseText);
-                myObj = JSON.parse(this.responseText);
+                try {
+  					myObj = JSON.parse(this.responseText);
+				}
+				catch(err) {
+  					myObj.pageid = null;
+				}
                 console.log(myObj);
                 if (myObj.pageid == null){
                     popup = L.popup()

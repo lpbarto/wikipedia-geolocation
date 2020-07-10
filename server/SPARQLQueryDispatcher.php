@@ -18,7 +18,7 @@ class SPARQLQueryDispatcher
                 'method' => 'GET',
                 'header' => [
                     'Accept: application/sparql-results+json',
-                    'User-Agent: WikiMaps/1.0 (http://lapobarto.altervista.org/wikimaps/; bart.sneakers@gmail.com)', // TODO adjust this; see https://w.wiki/CX6
+                    'User-Agent: WikiMaps/1.0 (http://lapobarto.altervista.org/wikimaps/; infowikimaps@gmail.com)', // TODO adjust this; see https://w.wiki/CX6
                 ],
             ],
         ];

@@ -1,9 +1,9 @@
 <?php
 // echo("\n Sono in config.php \n");  //TEST
 $db_host = 'localhost';
-$db_user = 'wikimaps';
+$db_user = 'lapobarto';
 $db_pass = 'WikiMaps2020';
-$db_name = 'wikimaps';
+$db_name = 'my_lapobarto';
 // echo("\n settato impostazioni db \n");     //TEST
 $db_connect = mysqli_connect($db_host ,$db_user , $db_pass, $db_name);
 // echo("\n eseguito connessione a db \n");     //TEST

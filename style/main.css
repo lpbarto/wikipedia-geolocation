@@ -45,6 +45,8 @@ body {
 #resultMenu {
     max-height: 400px;
     overflow-y: auto;
+    max-width: 100px;
+    overflow-x: auto;
 }
 
 #optionS {

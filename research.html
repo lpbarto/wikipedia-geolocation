@@ -95,7 +95,7 @@
                 console.log(this.responseText);
                 myObj = JSON.parse(this.responseText);
                 console.log(myObj);
-                if (myObj.pageid == null || !Array.isArray(myObj)){
+                if (myObj.pageid == null){
                     popup = L.popup()
                         .setLatLng([43.77, 11.25])
                         .setContent("Page not found")

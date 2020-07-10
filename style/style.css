@@ -16,16 +16,28 @@
     padding: 10px 40px;
 }
 .homepagetile{
-    height: 90vh;
     display: flex;
     justify-content: center;
+    height: 90vh;
     
 }
 
+.containerhero{
+    min-height: 90vh;
+}
 
+
+@media screen and (max-width: 991px) {
+
+    .homepagetile{
+        height: 45vh;
+    }
+        
+  }
 
 @media screen and (max-width: 575px) {
     #burger {
          display: none; 
         } 
+
   }

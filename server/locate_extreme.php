@@ -60,10 +60,10 @@ arsort($linkCount);
 // print_r ($linkCount);   //TEST
 
 foreach( $linkCount as $k => $v ){
-    // echo( $k . "\n" );  //TEST
+    //  echo( $k . "\n" );  //TEST
     $titolo = $k;
     include 'locate_query_extreme.php';
-    if(isset($coordinatesResult['results']['bindings'][0]['coor']['value'])){
+    if(isset($coordinatesResult['results']['bindings'][0]['coordinate']['value'])){
         // echo("ho trovato qualcosa  ");
         include 'update_coordinate.php';
         break;

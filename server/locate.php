@@ -3,6 +3,7 @@
 header("Content-Type: application/json; charset=UTF-8");
 $obj = json_decode($_GET["x"], false);
 
+// $obj->title = "Rinascimento"; //TEST
 // Search on Wikipedia
 $endPoint = "https://it.wikipedia.org/w/api.php";
 $params = [
@@ -67,10 +68,13 @@ if ( isset($outp["lat"]) ){   // Check if the page was geolocated
         // if ( $outp['lat'] != "NULL" && $outp['lon'] != "NULL") {    
         //     include('new.php');
         // }
-        if ( $outp['lat'] == null && $outp['lon'] == null) {    
-                 include('locate_extreme.php');
+        // echo json_encode($outp);   //TEST
+        if ( !isset($outp["lat"]) || ($outp['lat'] == null  && $outp['lon'] == null) ) {    
+                // echo("IN EXTREME");
+                include('locate_extreme.php');
         }
-        if ( $outp['lat'] != null && $outp['lon'] != null) {    
+        // echo json_encode($outp);    //TEST
+        if ( $outp['lat'] != null  && $outp['lon'] != null) {    
                  include('new.php');
         }
 

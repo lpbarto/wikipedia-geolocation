@@ -2,12 +2,12 @@
 
 $endpointUrl = 'https://query.wikidata.org/sparql';
 $sparqlQueryString = <<< SPARQL
-SELECT DISTINCT ?coor
+SELECT DISTINCT ?coordinate
 WHERE
 {
  
   ?place wdt:P31 wd:Q515.
-  ?place wdt:P625 ?coor.
+  ?place wdt:P625 ?coordinate.
  
   ?sitelink schema:about ?place;
       schema:isPartOf <https://it.wikipedia.org/>;

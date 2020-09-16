@@ -47,10 +47,11 @@
                     <input id="text1", placeholder="type something">
                 </div>
                 <div id="button">
-                    <button onclick="search()" id="bt"> search </button>
+                    <button type="submit" id="bt"> search </button>
                 </div>
             </div>
-        </div>            
+            <ul id="searchResults"></ul>
+        </div>    
     </div>
 
     <div class="loader" title="2">
@@ -84,11 +85,11 @@
         var lon;
         var research;
 
-        function search(){
-            research = document.getElementById("text1").value;
-            research = titleCase(research);
+        function search(resultTitle){
+            // research = document.getElementById("text1").value;
+            // research = titleCase(research);
             var obj, param, xmlhttp;
-            obj = { "title": research };
+            obj = { "title": resultTitle };
             console.log(obj.title);
             param = JSON.stringify(obj);
             xmlhttp = new XMLHttpRequest();
@@ -142,15 +143,18 @@
             }
         }
 
-        function titleCase(str) {
+        /* function titleCase(str) {
             var splitStr = str.toLowerCase().split(' ');
             for (var i = 0; i < splitStr.length; i++) {
                 splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
             }
             return splitStr.join(' '); 
         }
-
+*/
     </script>
+
+    <script src="scripts/suggerimenti.js"></script>
+
     <script
     src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

@@ -174,8 +174,41 @@ svg {
   fill: #e44b3b;
 }
 
+/* grafica per la ricerca e risultati ricerca */
+
+#searchResults {
+    list-style: none;
+    margin: 0 auto;
+    text-align: center;
+    display: block;
+    padding-left: 0;
+    width: 100%;
+}
+
+.singleResult {
+    background: #fff;
+    font-family: 'Inconsolata', sans-serif;
+    font-weight: 100;
+    padding: 0 45px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+    display: inline-block;
+    margin: 10px;
+    /* min-width: 400px; */
+    border-bottom: 1px solid #ddd;
+    border-radius: 6px;
+    color: #777;
+}
+
+.singleResult p {
+    font-size: 16px;
+    letter-spacing: 0.5px;
+}
+
+
 @media (max-width: 768px) {
   html {
     font-size: 80%;
   }
 }
+
+

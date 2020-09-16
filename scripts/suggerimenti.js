@@ -2,7 +2,7 @@
 // https://en.wikipedia.org/wiki/Special:Random
 // https://www.mediawiki.org/wiki/API:Main_page
 
-var searchBar = document.getElementById('searchBar');
+var searchBar = document.getElementById('text1');
 var submitBtn = document.getElementById('bt');
 var query = searchBar.value;
 

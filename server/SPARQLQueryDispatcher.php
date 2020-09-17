@@ -30,7 +30,23 @@ class SPARQLQueryDispatcher
             $response = ['results']['bindings'][0]['coordinate']['value'];
 
         }
-        return json_decode($response, true);
+        try {
+            return json_decode($response, true);
+        } catch (TypeError $ex) {
+            $risposta = array(
+                'results'=>array(
+                    'bindings'=>array(
+                        0=>array(
+                            'coordinate'=>array(
+                                'value'
+                            )
+                        )
+                    )
+                )
+                            );
+            return $risposta;
+        }
+        
     }
 }
 ?>

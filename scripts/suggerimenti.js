@@ -45,17 +45,47 @@ function searchResults(url) {
                 var resultsLi = document.createElement('li'); // Create li element for all page titles
 
                 resultsLi.className = 'singleResult'; // Add class to all li elements
-                resultsLi.style.display = 'none'; // Hide li by default
+                //resultsLi.style.display = 'none'; // Hide li by default
                 resultsLi.innerHTML = '<p>' + result.query.pages[i].title.toLowerCase() + '</p>'; // Add title text to lis
                 searchResults.appendChild(resultsLi); // Append lis to searchResults div
 
-                $(resultsLi).wrap(function() { // Wrap li with corresponding wiki url
-                   // return '<a target="_blank" href="https://it.wikipedia.org/wiki/' + result.query.pages[i].title + '"></a>';
-                   return '<a target="_blank" onClick="search(' + result.query.pages[i].title + ')"></a>';
-                });
+            
+                
+                // $(resultsLi).wrap(function() { // Wrap li with corresponding wiki url
+                //    // return '<a target="_blank" href="https://it.wikipedia.org/wiki/' + result.query.pages[i].title + '"></a>';
+                //    return '<a id="'+ result.query.pages[i].title +'"></a>';
+                // });
+
+                // $(resultsLi).on("click", function(){
+                //     return search(result.query.pages[i].title);
+
+                // });
+                $(resultsLi).attr("id", i);
+
+                
+                
+                
+               
+
 
                 // $(resultsLi).fadeIn(1000); // Fade in hidden lis
             }
+
+            var listItems = $("#searchResults li");
+            listItems.each(function(idx, li) {
+                var product = $(li);
+
+                $(product).on("click", function(){
+                    search(result.query.pages[$(product).attr('id')].title);
+                });
+
+                // and the rest of your code
+            });
+
+
+            // document.getElementById(result.query.pages[i].title).on("click", function(){
+            //     search(result.query.pages[i].title);
+            // });
 
         }
     });

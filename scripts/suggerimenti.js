@@ -94,7 +94,7 @@ function searchResults(url) {
                     if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
                         console.log('si è uno smartphone');
                         // true for mobile device
-                        document.getElementById('searchResults').style.diplay = 'none';
+                        document.getElementById('searchResults').style.display = 'none';
                         
                     }
                 });
@@ -106,6 +106,7 @@ function searchResults(url) {
             // document.getElementById(result.query.pages[i].title).on("click", function(){
             //     search(result.query.pages[i].title);
             // });
+            document.getElementById('searchResults').style.display = 'block';
 
         }
     });

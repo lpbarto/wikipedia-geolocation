@@ -1,314 +1,476 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
 
-<head>
-    <meta charset="UTF-8">
+    <meta name="description" content="Discover" />
+    <meta name="keywords" content="discover, wikimaps, wikipedia, map" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <meta name="description" content="Discover">
-    <meta name="keywords" content="discover, wikimaps, wikipedia, map">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" type="text/css" href="style/main.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+    <link rel="stylesheet" type="text/css" href="style/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+    />
     <!-- <link rel="stylesheet" type="text/css" href="style/bootstrap/bootstrap.css"> -->
-    <link rel="stylesheet" type="text/css" href="style/style.css">
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style/style.css" />
+    <link rel="stylesheet" href="style/main2.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
     <title>WikiMaps - Discover</title>
+  </head>
 
-</head>
+  <body>
+    <nav
+      class="navbar navbar-expand-sm navbar-light navbar-wikimaps sticky-top"
+    >
+      <a href="index.html" class="navbar-brand"
+        ><img src="images/SVG/LogoPPM.svg" width="40" height="40" /> Wiki Maps
+      </a>
+      <button
+        class="navbar-toggler"
+        data-toggle="collapse"
+        data-target="#navbarMenu"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-<body>
-    <nav class="navbar navbar-expand-sm navbar-light navbar-wikimaps sticky-top">
-        <a href="index.html" class="navbar-brand"><img src="images/SVG/LogoPPM.svg" width="40" height="40"> Wiki Maps </a>
-        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-  
-        <div class="collapse navbar-collapse" id="navbarMenu">
-            <ul class="navbar-nav">
-                <li class="nav-item"><a href="research.html" class="nav-link">WikiSearch</a></li>
-                <li class="nav-item"><a href="DiscoverUp.html" class="nav-link">WikiDiscover</a></li>
-            </ul>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item "> <a href="support.html" class="nav-link">Support</a> </li>
-            </ul>
-        </div>   
+      <div class="collapse navbar-collapse" id="navbarMenu">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a href="research.html" class="nav-link">WikiSearch</a>
+          </li>
+          <li class="nav-item">
+            <a href="DiscoverUp.html" class="nav-link">WikiDiscover</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a href="support.html" class="nav-link">Support</a>
+          </li>
+        </ul>
+      </div>
     </nav>
-    
 
     <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Option:
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <div class="form-group form-check dropdown-item" id="optionS">
-                <input type="checkbox", class="form-check-input", onchange="tickOnAll()", id="all", value="all", checked/>
-                <label class="form-check-label" for="all">All</label>
-            </div>
-
-            <div class="form-group form-check dropdown-item" id="optionS">
-                <input type="checkbox", class="form-check-input", onchange="tickOnRest()", id="building", value="building", tabindex="1"/>
-                <label class="form-check-label" for="building">Building</label>
-            </div>
-
-            <div class="form-group form-check dropdown-item" id="optionS">
-                <input type="checkbox", class="form-check-input", onchange="tickOnRest()", id="person", value="person", tabindex="1"/>
-                <label class="form-check-label" for="person">Person</label>
-            </div>
-
-            <div class="form-group form-check dropdown-item" id="optionS">
-                <input type="checkbox", class="form-check-input", onchange="tickOnRest()", id="company", value="company", tabindex="1"/>
-                <label class="form-check-label" for="company">Company</label>
-            </div>
-
-            <div class="form-group form-check dropdown-item" id="optionS">
-                <input type="checkbox", class="form-check-input", onchange="tickOnRest()", id="art", value="art", tabindex="1"/>
-                <label class="form-check-label" for="art">Art</label>
-            </div>
-
-            <div class="form-group dropdown-item" id="optionS">
-                <label for="radius" >Radius: <span id="valueR">10 km</span></label>
-                <input type="range", class="form-control-range", oninput="getRadius()", id="radius", min="1", max="100", value="10"/>
-            </div>
-
-            <div class="form-group dropdown-item" id="optionS">
-                <label for="radius" >Number of element: <span id="valueNel">10</span></label>
-                <input type="range", class="form-control-range", oninput="getNel()", id="Nel", min="1", max="20", value="10"/>
-            </div>
-
+      <button
+        class="btn btn-secondary dropdown-toggle"
+        type="button"
+        id="dropdownMenuButton"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        Option:
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <div class="form-group form-check dropdown-item" id="optionS">
+          <input
+            type="checkbox"
+            ,
+            class="form-check-input"
+            ,
+            onchange="tickOnAll()"
+            ,
+            id="all"
+            ,
+            value="all"
+            ,
+            checked
+          />
+          <label class="form-check-label" for="all">All</label>
         </div>
+
+        <div class="form-group form-check dropdown-item" id="optionS">
+          <input
+            type="checkbox"
+            ,
+            class="form-check-input"
+            ,
+            onchange="tickOnRest()"
+            ,
+            id="building"
+            ,
+            value="building"
+            ,
+            tabindex="1"
+          />
+          <label class="form-check-label" for="building">Building</label>
+        </div>
+
+        <div class="form-group form-check dropdown-item" id="optionS">
+          <input
+            type="checkbox"
+            ,
+            class="form-check-input"
+            ,
+            onchange="tickOnRest()"
+            ,
+            id="person"
+            ,
+            value="person"
+            ,
+            tabindex="1"
+          />
+          <label class="form-check-label" for="person">Person</label>
+        </div>
+
+        <div class="form-group form-check dropdown-item" id="optionS">
+          <input
+            type="checkbox"
+            ,
+            class="form-check-input"
+            ,
+            onchange="tickOnRest()"
+            ,
+            id="company"
+            ,
+            value="company"
+            ,
+            tabindex="1"
+          />
+          <label class="form-check-label" for="company">Company</label>
+        </div>
+
+        <div class="form-group form-check dropdown-item" id="optionS">
+          <input
+            type="checkbox"
+            ,
+            class="form-check-input"
+            ,
+            onchange="tickOnRest()"
+            ,
+            id="art"
+            ,
+            value="art"
+            ,
+            tabindex="1"
+          />
+          <label class="form-check-label" for="art">Art</label>
+        </div>
+
+        <div class="form-group dropdown-item" id="optionS">
+          <label for="radius">Radius: <span id="valueR">10 km</span></label>
+          <input
+            type="range"
+            ,
+            class="form-control-range"
+            ,
+            oninput="getRadius()"
+            ,
+            id="radius"
+            ,
+            min="1"
+            ,
+            max="100"
+            ,
+            value="10"
+          />
+        </div>
+
+        <div class="form-group dropdown-item" id="optionS">
+          <label for="radius"
+            >Number of element: <span id="valueNel">10</span></label
+          >
+          <input
+            type="range"
+            ,
+            class="form-control-range"
+            ,
+            oninput="getNel()"
+            ,
+            id="Nel"
+            ,
+            min="1"
+            ,
+            max="20"
+            ,
+            value="10"
+          />
+        </div>
+      </div>
     </div>
 
-    <div class="btn-group dropup", id="resultBar">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Results:
-        </button> 
-        <div class="dropdown-menu" id="resultMenu" aria-labelledby="dropdownMenuButton">
-            <div> blabla</div>
-        </div>
+    <div class="btn-group dropup" , id="resultBar">
+      <button
+        class="btn btn-secondary dropdown-toggle"
+        type="button"
+        id="dropdownMenuButton"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        Results:
+      </button>
+      <div
+        class="dropdown-menu"
+        id="resultMenu"
+        aria-labelledby="dropdownMenuButton"
+      >
+        <div>blabla</div>
+      </div>
     </div>
 
     <div class="loader" title="2">
-        <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-           width="40px" height="40px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
-        <path fill="#000" d="M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z">
-          <animateTransform attributeType="xml"
+      <svg
+        version="1.1"
+        id="loader-1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        x="0px"
+        y="0px"
+        width="40px"
+        height="40px"
+        viewBox="0 0 50 50"
+        style="enable-background: new 0 0 50 50"
+        xml:space="preserve"
+      >
+        <path
+          fill="#000"
+          d="M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z"
+        >
+          <animateTransform
+            attributeType="xml"
             attributeName="transform"
             type="rotate"
             from="0 25 25"
             to="360 25 25"
             dur="0.6s"
-            repeatCount="indefinite"/>
-          </path>
-        </svg>
-      </div>
+            repeatCount="indefinite"
+          />
+        </path>
+      </svg>
+    </div>
 
     <div id="map"></div>
 
     <script>
-        var map = L.map('map', { zoomControl: false }).setView([43.77, 11.25], 5);
-        new L.Control.Zoom({ position: 'topright' }).addTo(map);
-        L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=BlBYhbJ1lYy0qQkYSJWE', {
-            attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
-            maxZoom: 18, minZoom: 2
+      var map = L.map("map", { zoomControl: false }).setView([43.77, 11.25], 5);
+      new L.Control.Zoom({ position: "topright" }).addTo(map);
+      L.tileLayer(
+        "https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=BlBYhbJ1lYy0qQkYSJWE",
+        {
+          attribution:
+            '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
+          maxZoom: 18,
+          minZoom: 2,
+        }
+      ).addTo(map);
+
+      var circle = L.circle();
+
+      var popup = L.popup()
+        .setLatLng([43.77, 11.25])
+        .setContent("Click anywhere on the map to start Discovering")
+        .openOn(map);
+
+      function clearResultBar() {
+        var e = document.getElementById("resultMenu");
+        e.innerHTML = "";
+        var menu = document.getElementById("resultBar");
+        menu.style.display = "none";
+      }
+
+      var lat;
+      var lon;
+
+      function onMapClick(e) {
+        popup
+          .setLatLng(e.latlng)
+          .setContent(
+            "<b onclick ='search()'>Click the popup to start the search from here </b>"
+          )
+          .openOn(map);
+        lat = e.latlng.lat;
+        lon = e.latlng.lng;
+        map.removeLayer(circle);
+        circle = L.circle([lat, lon], {
+          color: "red",
+          fillColor: "#f03",
+          fillOpacity: 0.5,
+          radius: radius.value * 1000,
         }).addTo(map);
+      }
 
-        var circle = L.circle();
+      var markers = new Array();
 
-        var popup = L.popup()
-            .setLatLng([43.77, 11.25])
-            .setContent("Click anywhere on the map to start Discovering")
-            .openOn(map);
+      function search() {
+        clearResultBar();
 
-        function clearResultBar() { 
-            var e = document.getElementById("resultMenu"); 
-            e.innerHTML = ""; 
-            var menu = document.getElementById("resultBar");
-            menu.style.display = "none"
+        var obj, param, xmlhttp;
+
+        obj = {
+          lat: lat,
+          lon: lon,
+          radius: radius.value,
+          limit: Nel.value,
+          filters: {
+            all: setOption("all"),
+            humans: setOption("person"),
+            buildings: setOption("building"),
+            art: setOption("art"),
+            business: setOption("company"),
+          },
+        };
+
+        console.log(obj);
+        for (x in markers) {
+          map.removeLayer(markers[x]);
         }
-        
-        var lat;
-        var lon;
-
-        function onMapClick(e) {
-            popup
-            .setLatLng(e.latlng)
-            .setContent("<b onclick ='search()'>Click the popup to start the search from here </b>")
-            .openOn(map);
-            lat = e.latlng.lat;
-            lon = e.latlng.lng;
-            map.removeLayer(circle);
-            circle = L.circle([lat, lon], {
-                        color: 'red',
-                        fillColor: '#f03',
-                        fillOpacity: 0.5,
-                        radius: radius.value * 1000
-                    }).addTo(map);
-        }
-
-        var markers = new Array();
-
-        function search(){
-            clearResultBar();
-
-            var obj, param, xmlhttp;
-
-            obj = { "lat": lat,
-                    "lon": lon,
-                    "radius": radius.value,
-                    "limit": Nel.value,
-                    "filters": {
-                        "all": setOption("all"),
-                        "humans": setOption("person") ,
-                        "buildings": setOption("building") ,
-                        "art": setOption("art") ,
-                        "business": setOption("company")
-                    } 
-                };
-
-            console.log(obj);
-            for(x in markers){
-                map.removeLayer(markers[x]);
+        map.removeLayer(popup);
+        map.removeLayer(circle);
+        param = JSON.stringify(obj);
+        xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function () {
+          if (this.readyState == 4 && this.status == 200) {
+            for (i = 0; i < load.length; i++) {
+              load[i].style.display = "none";
             }
-            map.removeLayer(popup);
-            map.removeLayer(circle);
-            param = JSON.stringify(obj);
-            xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    for(i = 0; i < load.length; i++) {
-                    load[i].style.display = 'none';
-                }
-                    console.log("il server ha risposto");
-                    console.log(this.responseText);
-                    
+            console.log("il server ha risposto");
+            console.log(this.responseText);
 
-                myObj = JSON.parse(this.responseText);
-                console.log(myObj);
+            myObj = JSON.parse(this.responseText);
+            console.log(myObj);
 
-                if (!Array.isArray(myObj) || !myObj.length) {
-                    popup = L.popup()
-                        .setLatLng([lat, lon])
-                        .setContent("Nothing found")
-                        .openOn(map);
-                    map.setView([lat, lon]);
-                }
-                else {
-                    for (x in myObj) {
-                    markers[x] = L.marker([myObj[x].lat, myObj[x].lon]).addTo(map);
-                    markers[x].bindPopup("<a target='_blank' href='https://it.wikipedia.org/wiki/" + myObj[x].title.replace(/ /g,"_") +"'>" + myObj[x].title + "</a>").openPopup();
-                    showResultBar(myObj[x]);
-                    }
-                    map.setView([myObj[0].lat, myObj[0].lon]);
-                }
+            if (!Array.isArray(myObj) || !myObj.length) {
+              popup = L.popup()
+                .setLatLng([lat, lon])
+                .setContent("Nothing found")
+                .openOn(map);
+              map.setView([lat, lon]);
+            } else {
+              for (x in myObj) {
+                markers[x] = L.marker([myObj[x].lat, myObj[x].lon]).addTo(map);
+                markers[x]
+                  .bindPopup(
+                    "<a target='_blank' href='https://it.wikipedia.org/wiki/" +
+                      myObj[x].title.replace(/ /g, "_") +
+                      "'>" +
+                      myObj[x].title +
+                      "</a>"
+                  )
+                  .openPopup();
+                showResultBar(myObj[x]);
+              }
+              map.setView([myObj[0].lat, myObj[0].lon]);
             }
-            };
-            xmlhttp.open("GET", "server/find_pages.php?x=" + param, true);
-            xmlhttp.send();
-            var load = document.getElementsByClassName('loader');
-            for(i = 0; i < load.length; i++) {
-                load[i].style.display = 'inline-block';
-            }
-        
-    }
-
-        function setOption(option){
-            if(document.getElementById(option).checked){
-                return 1;
-            }
-            else{
-                return 0;
-            }
-
+          }
+        };
+        xmlhttp.open("GET", "server/find_pages.php?x=" + param, true);
+        xmlhttp.send();
+        var load = document.getElementsByClassName("loader");
+        for (i = 0; i < load.length; i++) {
+          load[i].style.display = "inline-block";
         }
+      }
 
-        function tickOnAll() {
-            if (document.getElementById("all").checked) {
-                    document.getElementById("person").checked = false;
-                    document.getElementById("building").checked = false;
-                    document.getElementById("company").checked = false;
-                    document.getElementById("art").checked = false;
-            }
-            else {
-                if (document.getElementById("person").checked == false && document.getElementById("building").checked == false
-                 && document.getElementById("company").checked == false && document.getElementById("art").checked == false){
-                    document.getElementById("all").checked = true;
-                 }
-            }
+      function setOption(option) {
+        if (document.getElementById(option).checked) {
+          return 1;
+        } else {
+          return 0;
         }
+      }
 
-        function tickOnRest() {
-                if (document.getElementById("person").checked) {
-                        document.getElementById("all").checked = false;
-                }
-                if (document.getElementById("building").checked) {
-                        document.getElementById("all").checked = false;
-                }
-                if (document.getElementById("company").checked) {
-                        document.getElementById("all").checked = false;
-                }
-                if (document.getElementById("art").checked) {
-                        document.getElementById("all").checked = false;
-                }
-                if (document.getElementById("person").checked == false && document.getElementById("building").checked == false
-                 && document.getElementById("company").checked == false && document.getElementById("art").checked == false){
-                    document.getElementById("all").checked = true;
-                 }
+      function tickOnAll() {
+        if (document.getElementById("all").checked) {
+          document.getElementById("person").checked = false;
+          document.getElementById("building").checked = false;
+          document.getElementById("company").checked = false;
+          document.getElementById("art").checked = false;
+        } else {
+          if (
+            document.getElementById("person").checked == false &&
+            document.getElementById("building").checked == false &&
+            document.getElementById("company").checked == false &&
+            document.getElementById("art").checked == false
+          ) {
+            document.getElementById("all").checked = true;
+          }
         }
+      }
 
-        function getRadius(){
-            map.removeLayer(circle);
-            var radius = document.getElementById("radius").value;
-            var valueR = document.getElementById("valueR");
-            valueR.innerHTML = radius + " km";
-            circle = L.circle([lat, lon], {
-                        color: 'red',
-                        fillColor: '#f03',
-                        fillOpacity: 0.5,
-                        radius: radius * 1000
-                    }).addTo(map);
+      function tickOnRest() {
+        if (document.getElementById("person").checked) {
+          document.getElementById("all").checked = false;
         }
-
-        function getNel(){          
-            var Nel = document.getElementById("Nel").value;
-            var valueNel = document.getElementById("valueNel");
-            valueNel.innerHTML = Nel ;
+        if (document.getElementById("building").checked) {
+          document.getElementById("all").checked = false;
         }
-
-        function showResultBar(data){
-            var myDiv = document.getElementById("resultBar");
-            myDiv.style.display = "block";
-            var z = document.createElement("div");
-            z.className = "form-group form-check dropdown-item";
-            z.id ="optionS";
-            z.innerHTML = "<a target='_blank' href='https://it.wikipedia.org/wiki/" + data.title.replace(/ /g,"_") +"'>" + data.title + "</a>";
-            var w = document.getElementById("resultMenu");
-            w.appendChild(z);
+        if (document.getElementById("company").checked) {
+          document.getElementById("all").checked = false;
         }
+        if (document.getElementById("art").checked) {
+          document.getElementById("all").checked = false;
+        }
+        if (
+          document.getElementById("person").checked == false &&
+          document.getElementById("building").checked == false &&
+          document.getElementById("company").checked == false &&
+          document.getElementById("art").checked == false
+        ) {
+          document.getElementById("all").checked = true;
+        }
+      }
 
-        map.on('click', onMapClick);
-        popup.on('click', search);
+      function getRadius() {
+        map.removeLayer(circle);
+        var radius = document.getElementById("radius").value;
+        var valueR = document.getElementById("valueR");
+        valueR.innerHTML = radius + " km";
+        circle = L.circle([lat, lon], {
+          color: "red",
+          fillColor: "#f03",
+          fillOpacity: 0.5,
+          radius: radius * 1000,
+        }).addTo(map);
+      }
 
+      function getNel() {
+        var Nel = document.getElementById("Nel").value;
+        var valueNel = document.getElementById("valueNel");
+        valueNel.innerHTML = Nel;
+      }
+
+      function showResultBar(data) {
+        var myDiv = document.getElementById("resultBar");
+        myDiv.style.display = "block";
+        var z = document.createElement("div");
+        z.className = "form-group form-check dropdown-item";
+        z.id = "optionS";
+        z.innerHTML =
+          "<a target='_blank' href='https://it.wikipedia.org/wiki/" +
+          data.title.replace(/ /g, "_") +
+          "'>" +
+          data.title +
+          "</a>";
+        var w = document.getElementById("resultMenu");
+        w.appendChild(z);
+      }
+
+      map.on("click", onMapClick);
+      popup.on("click", search);
     </script>
 
     <script
-        src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"
-        ></script>
-        <script
-        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"
-        ></script>
-        <script
-        src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-        crossorigin="anonymous"
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
     ></script>
- 
-</body>
-
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

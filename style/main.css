@@ -45,7 +45,7 @@ body {
 #resultMenu {
     max-height: 400px;
     overflow-y: auto;
-    max-width: 120px;
+    max-width: 250px;
     overflow-x: auto;
 }
 
@@ -64,7 +64,7 @@ body {
 #resultBar {
     position: absolute;
     bottom: 0px;
-    right: 120px;
+    right: 200px;
     left: auto;
     z-index: 2;
     display: none;
@@ -107,7 +107,7 @@ body {
 
   @media all and (max-width: 499px) {
     #resultMenu {
-        max-height: 200px;
+        max-width: 200px;
         overflow-y: auto;
     }
  

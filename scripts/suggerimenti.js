@@ -24,9 +24,23 @@ submitBtn.addEventListener('click', function(e) { // Listen for click on submit 
     searchBar.value = ''; // Clear search bar
     url = apiUrl; // Set url to apiUrl
     searchResults(apiUrl); // Call searchResults, passing in the apiUrl
+});
 
-    
+document.querySelector('#txtSearch').addEventListener('keypress', function (e) { // Listen for pressing enter 
 
+    if (e.key === 'Enter') {
+        $("#searchResults").empty(); // Clear search results
+
+        e.preventDefault(); // Prevent default behavior of submit button
+
+        var apiUrl = api + "%27" + searchBar.value.replace(/[\s]/g, '_') + "%27"; // Replace whitespaces with underscores
+
+        // console.log(apiUrl);
+        // console.log('User Query:', searchBar.value); // Log the users search query
+        searchBar.value = ''; // Clear search bar
+        url = apiUrl; // Set url to apiUrl
+        searchResults(apiUrl); // Call searchResults, passing in the apiUrl
+      }
 });
 
 function searchResults(url) {

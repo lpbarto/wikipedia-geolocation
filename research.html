@@ -95,11 +95,7 @@
             map.removeLayer(marker);
             map.removeLayer(popup);
 
-            if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
-                // true for mobile device
-                var results = getElementsByClassName('searchResults');
-                results.style.diplay = 'none';
-            }
+            
 
             xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {

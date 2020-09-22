@@ -251,6 +251,12 @@ svg {
   html {
     font-size: 80%;
   }
+
+  .scroll-downs {
+    bottom: 20px;
+    width :23px;
+    height: 37px;
+  }
 }
 
 

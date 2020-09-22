@@ -26,7 +26,7 @@ submitBtn.addEventListener('click', function(e) { // Listen for click on submit 
     searchResults(apiUrl); // Call searchResults, passing in the apiUrl
 });
 
-document.querySelector('#txtSearch').addEventListener('keypress', function (e) { // Listen for pressing enter 
+document.addEventListener('keypress', function (e) { // Listen for pressing enter 
 
     if (e.key === 'Enter') {
         $("#searchResults").empty(); // Clear search results

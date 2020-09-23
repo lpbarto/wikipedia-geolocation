@@ -69,7 +69,10 @@ body {
     z-index: 2;
     display: none;
 }
-
+.leaflet-popup-content{
+    max-height: 250px;
+    overflow: auto;
+}
 .leaflet-popup-content:hover{
     cursor: pointer;
 }

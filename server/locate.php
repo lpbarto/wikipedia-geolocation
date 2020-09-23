@@ -12,7 +12,7 @@ $params = [
     "titles" => $obj->title,
     "format" => "json",
     "exintro" => 1,
-	"explaintext" => 1
+	// "explaintext" => 1
 ];
 
 $url = $endPoint . "?" . http_build_query( $params );

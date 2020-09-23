@@ -176,7 +176,8 @@
                       myObj.title.replace(/ /g, "_") +
                       "'>" +
                       myObj.title +
-                      "</a>"
+                      "</a>" +
+                      "<p>" + myObj.abstract + "</p>"
                   )
                   .openPopup();
                 map.setView([myObj.lat, myObj.lon]);

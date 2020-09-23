@@ -6,8 +6,8 @@ var searchBar = document.getElementById('text1');
 var submitBtn = document.getElementById('bt');
 var query = searchBar.value;
 
-var api = "https://it.wikipedia.org/w/api.php?action=query&origin=*&format=json&generator=search&gsrnamespace=0&gsrlimit=35&gsrsearch="
-
+// var api = "https://it.wikipedia.org/w/api.php?action=query&origin=*&format=json&generator=search&gsrnamespace=0&gsrlimit=35&gsrsearch="
+var api ="https://it.wikipedia.org/w/api.php?action=query&format=json&origin=*&list=search&srsearch=";
 // var cb = '&callback=JSON_CALLBACK';
 var url = ''; // Set url from outside addEventListener function
 
@@ -52,7 +52,7 @@ function searchResults(url) {
             //console.log('Result:', result); // Returns full result object
             //console.log('Pages:', result.query.pages); // Returns result pages within result object
 
-            for (var i in result.query.pages) { // Loop through all pages within result object
+            for (var i in result.query.search) { // Loop through all pages within result object
 
                 // console.log(result.query.pages[i].title);
                 var searchResults = document.getElementById('searchResults');
@@ -60,7 +60,7 @@ function searchResults(url) {
 
                 resultsLi.className = 'singleResult'; // Add class to all li elements
                 //resultsLi.style.display = 'none'; // Hide li by default
-                resultsLi.innerHTML = '<p>' + result.query.pages[i].title.toLowerCase() + '</p>'; // Add title text to lis
+                resultsLi.innerHTML = '<p>' + result.query.search[i].title.toLowerCase() + '</p>'; // Add title text to lis
                 searchResults.appendChild(resultsLi); // Append lis to searchResults div
 
             
@@ -90,7 +90,7 @@ function searchResults(url) {
                 var product = $(li);
 
                 $(product).on("click", function(){
-                    search(result.query.pages[$(product).attr('id')].title);
+                    search(result.query.search[$(product).attr('id')].title);
                     //if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
                         // console.log('si è uno smartphone');
                         // true for mobile device

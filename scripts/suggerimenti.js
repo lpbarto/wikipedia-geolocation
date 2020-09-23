@@ -91,12 +91,11 @@ function searchResults(url) {
 
                 $(product).on("click", function(){
                     search(result.query.pages[$(product).attr('id')].title);
-                    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
-                        console.log('si è uno smartphone');
+                    //if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+                        // console.log('si è uno smartphone');
                         // true for mobile device
-                        document.getElementById('searchResults').style.display = 'none';
-                        
-                    }
+                    document.getElementById('searchResults').style.display = 'none'; 
+                     //} levare questo commento se viene levato il commento all'if   
                 });
 
                 // and the rest of your code

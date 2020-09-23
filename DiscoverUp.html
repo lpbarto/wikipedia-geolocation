@@ -193,6 +193,10 @@
             value="10"
           />
         </div>
+
+        <div class="form-group dropdown-item" id="options">
+          <button type="button" class="btn btn-secondary" onclick="search()">Update</button>
+        </div> 
       </div>
     </div>
 
@@ -280,14 +284,15 @@
       var lon;
 
       function onMapClick(e) {
-        popup
+        lat = e.latlng.lat;
+        lon = e.latlng.lng;
+        /* popup
           .setLatLng(e.latlng)
           .setContent(
             "<b onclick ='search()'>Click the popup to start the search from here </b>"
           )
-          .openOn(map);
-        lat = e.latlng.lat;
-        lon = e.latlng.lng;
+          .openOn(map);*/
+        search();
         map.removeLayer(circle);
         circle = L.circle([lat, lon], {
           color: "red",

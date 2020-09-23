@@ -8,9 +8,11 @@ $obj = json_decode($_GET["x"], false);
 $endPoint = "https://it.wikipedia.org/w/api.php";
 $params = [
     "action" => "query",
-    "prop" => "coordinates",
+    "prop" => "coordinates|extracts",
     "titles" => $obj->title,
-    "format" => "json"
+    "format" => "json",
+    "exintro" => 1,
+	"explaintext" => 1
 ];
 
 $url = $endPoint . "?" . http_build_query( $params );
@@ -29,6 +31,7 @@ foreach( $result["query"]["pages"] as $k => $v ) {
         "title" => $v["title"],
         "lat" => $v["coordinates"][0]["lat"],
         "lon" => $v["coordinates"][0]["lon"],
+        "abstract" => $v["extract"]
     );
 
 }

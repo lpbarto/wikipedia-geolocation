@@ -24,12 +24,13 @@
       class="navbar navbar-expand-sm navbar-light navbar-wikimaps sticky-top"
     >
       <a href="index.html" class="navbar-brand"
-        ><img src="images/SVG/LogoPPM.svg" width="40" height="40" /> Wiki Maps
+        ><img src="images/SVG/LogoPPM.svg" width="40" height="40" alt="WikiMaps logo" /> Wiki Maps
       </a>
       <button
         class="navbar-toggler"
         data-toggle="collapse"
         data-target="#navbarMenu"
+        title="toggler"
       >
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -104,11 +105,11 @@
         </div>
 
         <div class="form-group py-4">
-          <label for="exampleLastName">Insert text here.</label>
+          <label for="text-message">Insert text here.</label>
           <textarea
             name="message"
             class="form-control"
-            id="exampleFormControlTextarea1"
+            id="text-message"
             placeholder="Write here..."
             rows="4"
             required
@@ -117,6 +118,17 @@
         <input type="submit" class="form-control submit" value="SEND MESSAGE" />
       </form>
     </div>
+    
+    <hr class="featurette-divider" />
+
+    <footer class="container-fluid p-3">
+      <p class="text-muted">
+        © 2020-2021 WikiMaps ·
+        <a href="#">Privacy</a>
+        ·
+        <a href="#">Terms</a>
+      </p>
+    </footer>
 
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

@@ -8,20 +8,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" type="text/css" href="style/main.css" />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-    />
-    <!-- <link rel="stylesheet" type="text/css" href="style/bootstrap/bootstrap.css"> -->
+    
+    
     <link rel="stylesheet" type="text/css" href="style/style.css" />
-    <link rel="stylesheet" href="style/main2.css" />
+    <!-- <link rel="stylesheet" href="style/main2.css" />  -->
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
       integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
       crossorigin="anonymous"
     />
-    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+  integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+  crossorigin=""/>
+
     <title>WikiMaps - Discover</title>
   </head>
 
@@ -30,12 +30,13 @@
       class="navbar navbar-expand-sm navbar-light navbar-wikimaps sticky-top"
     >
       <a href="index.html" class="navbar-brand"
-        ><img src="images/SVG/LogoPPM.svg" width="40" height="40" /> Wiki Maps
+        ><img src="images/SVG/LogoPPM.svg" width="40" height="40" alt="WikiMaps logo"/> Wiki Maps
       </a>
       <button
         class="navbar-toggler"
         data-toggle="collapse"
         data-target="#navbarMenu"
+        title="toggler"
       >
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -170,11 +171,13 @@
             max="100"
             ,
             value="10"
+            ,
+            title="range"
           />
         </div>
 
         <div class="form-group dropdown-item" id="optionS">
-          <label for="radius"
+          <label for="Nel"
             >Number of element: <span id="valueNel">10</span></label
           >
           <input
@@ -253,9 +256,29 @@
 
     <div id="map"></div>
 
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+  integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+  crossorigin=""></script>
+
     <script>
       var map = L.map("map", { zoomControl: false }).setView([43.77, 11.25], 5);
-      new L.Control.Zoom({ position: "topright" }).addTo(map);
+      new L.Control.Zoom({ position: "bottomright" }).addTo(map);
       L.tileLayer(
         "https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=BlBYhbJ1lYy0qQkYSJWE",
         {
@@ -267,6 +290,12 @@
       ).addTo(map);
 
       var circle = L.circle();
+//       var circle = L.circle([43.77, 11.25], {
+//     color: 'red',
+//     fillColor: '#f03',
+//     fillOpacity: 0.5,
+//     radius: 10000
+// }).addTo(map);
 
       var popup = L.popup()
         .setLatLng([43.77, 11.25])
@@ -293,13 +322,18 @@
           )
           .openOn(map);*/
         search();
+       
         map.removeLayer(circle);
         circle = L.circle([lat, lon], {
           color: "red",
           fillColor: "#f03",
-          fillOpacity: 0.5,
+          fillOpacity: 0.2,
           radius: radius.value * 1000,
         }).addTo(map);
+        circle.bringToFront();
+
+        console.log("cerchio alla fine di on map click") //TEST
+        console.log(circle); //TEST
       }
 
       var markers = new Array();
@@ -328,7 +362,7 @@
           map.removeLayer(markers[x]);
         }
         map.removeLayer(popup);
-        map.removeLayer(circle);
+        // map.removeLayer(circle);
         param = JSON.stringify(obj);
         xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function () {
@@ -431,9 +465,11 @@
         circle = L.circle([lat, lon], {
           color: "red",
           fillColor: "#f03",
-          fillOpacity: 0.5,
+          fillOpacity: 0.2,
           radius: radius * 1000,
         }).addTo(map);
+        console.log("cerchio in fondo a get radius") //TEST
+        console.log(circle); //TEST
       }
 
       function getNel() {
@@ -462,20 +498,7 @@
       popup.on("click", search);
     </script>
 
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-      crossorigin="anonymous"
-    ></script>
+    
+    
   </body>
 </html>

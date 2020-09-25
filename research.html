@@ -30,12 +30,13 @@
       class="navbar navbar-expand-sm navbar-light navbar-wikimaps sticky-top"
     >
       <a href="index.html" class="navbar-brand"
-        ><img src="images/SVG/LogoPPM.svg" width="40" height="40" /> Wiki Maps
+        ><img src="images/SVG/LogoPPM.svg" width="40" height="40" alt="WikiMaps logo"/> Wiki Maps
       </a>
       <button
         class="navbar-toggler"
         data-toggle="collapse"
         data-target="#navbarMenu"
+        title="toggler"
       >
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -59,15 +60,22 @@
 
     <div id="box">
       <div id="searchBox">
-        <div id="searchBar">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" id="text1" placeholder="Search for a Wikipedia page" aria-label="Search for a wikipedia page" >
+          <div class="input-group-append">
+            <button class="btn btn-secondary" id="bt" type="button">Search</button>
+          </div>
+        </div>
+        <!-- <div id="searchBar">
           <div id="search">
-            <input id="text1" , placeholder="type something" />
+            <input id="text1" , placeholder="search for a Wiki page" />
           </div>
           <div id="button">
             <button type="submit" id="bt">search</button>
           </div>
         </div>
-        <ul id="searchResults"></ul>
+        -->
+        <ul class="list-group" id="searchResults"></ul> 
       </div>
     </div>
 
@@ -106,7 +114,7 @@
 
     <script>
       var map = L.map("map", { zoomControl: false }).setView([43.77, 11.25], 5);
-      new L.Control.Zoom({ position: "topright" }).addTo(map);
+      new L.Control.Zoom({ position: "bottomright" }).addTo(map);
       L.tileLayer(
         "https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=BlBYhbJ1lYy0qQkYSJWE",
         {

@@ -58,9 +58,10 @@ function searchResults(url) {
                 var searchResults = document.getElementById('searchResults');
                 var resultsLi = document.createElement('li'); // Create li element for all page titles
 
-                resultsLi.className = 'singleResult'; // Add class to all li elements
+                // resultsLi.className = 'singleResult'; // Add class to all li elements
+                resultsLi.className = 'list-group-item list-group-item-action';
                 //resultsLi.style.display = 'none'; // Hide li by default
-                resultsLi.innerHTML = '<p>' + result.query.search[i].title.toLowerCase() + '</p>'; // Add title text to lis
+                resultsLi.innerHTML = '<p>' + result.query.search[i].title + '</p>'; // Add title text to lis
                 searchResults.appendChild(resultsLi); // Append lis to searchResults div
 
             
